@@ -1,4 +1,8 @@
 name: Push to OVH
+env:
+   FTP_SERVER: ${{ secrets.FTP_SERVER }}
+   FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+   FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 run-name: ${{ github.actor }} is sending files to OVHcloud 🚀
 on: [push]
 jobs:
@@ -11,5 +15,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: sftp -o StrictHostKeyChecking=no ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }}:/home/${{ secrets.FTP_USERNAME }}/www <<< $'../../*' 
+      - run: sftp -o StrictHostKeyChecking=no ${{ env.FTP_USERNAME }}:${{ env.FTP_PASSWORD }}@${{ env.FTP_SERVER }}:/home/${{ env.FTP_USERNAME }}/www <<< $'../../*' 
       - run: echo "🍏 This job's status is ${{ job.status }}."

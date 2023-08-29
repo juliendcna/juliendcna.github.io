@@ -15,5 +15,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: sftp -o StrictHostKeyChecking=no ${{ env.FTP_USERNAME }}:${{ env.FTP_PASSWORD }}@${{ env.FTP_SERVER }}:/home/${{ env.FTP_USERNAME }}/www <<< $'../../*' 
+      - name: Upload Files
+        id: upload
+        uses: Creepios/sftp-action@v1.0.3
+        with:
+          host: '${{ env.FTP_SERVER }}'
+          port: 22
+          username: '${{ env.FTP_USERNAME }}'
+          password: '${{ env.FTP_PASSWORD }}'
+          localPath: './'
+          remotePath: '/home/${{ env.FTP_USERNAME }}/www'
       - run: echo "🍏 This job's status is ${{ job.status }}."

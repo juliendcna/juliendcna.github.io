@@ -6,7 +6,7 @@ env:
 run-name: ${{ github.actor }} is sending files to OVHcloud 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Push-to-OVH:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."

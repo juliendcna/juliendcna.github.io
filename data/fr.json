@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "greeting": "Bienvenue sur mon Site !",
+    "name": "Julien Da Cunha",
+    "prefix": "Je suis",
+    "roles": [
+      "Passionné!",
+      "Ingénieur Système",
+      "Ingénieur Réseau",
+      "Ingénieur Cloud & DevOps"
+    ]
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "À propos de moi",
+    "description": "Derrière un clavier depuis tout petit, je suis passionné par l'informatique en général et plus specifiquement des Réseaux IP, du Cloud et de la Virtualisation.",
+    "info": [
+      { "label": "Nom", "value": "Julien Da Cunha" },
+      { "label": "Age", "value": "25 Ans" },
+      { "label": "Adresse", "value": "Geneva, Switzerland" },
+      { "label": "Email", "value": "julien@dacunha.ovh", "link": "mailto:julien@dacunha.ovh" }
+    ],
+    "stats": {
+      "number": "100",
+      "label": "% Taux de disponibilité du Lab!"
+    },
+    "cv_button": "Le CV publique arrive bientôt!"
+  },
+  "resume": {
+    "sections": [
+      {
+        "id": "education",
+        "title": "Formation",
+        "items": [
+          {
+            "date": "2019-2022",
+            "title": "Ingénieur en informatique et réseaux de communication",
+            "institution": "CPE Lyon",
+            "url": "https://www.cpe.fr/",
+            "description": ""
+          },
+          {
+            "date": "2017-2019",
+            "title": "D.U.T Réseaux & Télécommunications",
+            "institution": "IUT d'Annecy | Université Savoie Mont-Blanc",
+            "url": "https://www.iut-acy.univ-smb.fr/",
+            "description": "Formation dans les Télécommunications et en Administrations Système & Réseaux Informatiques."
+          },
+          {
+            "date": "2015-2017",
+            "title": "Baccalauréat STI2D (SIN)",
+            "institution": "Lycée Benjamin Franklin | Orléans, France",
+            "url": "http://www.lycee-benjamin-franklin.fr/",
+            "description": "Spécialisation : Systèmes d'Information et Numérique (SIN). Mention Bien."
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Experience",
+        "items": [
+          {
+            "date": "Septembre 2023 - Aujourd'hui",
+            "title": "Cloud & DevOps Engineer",
+            "institution": "Alpian",
+            "url": "https://alpian.com",
+            "description": ""
+          },
+          {
+            "date": "Septembre 2022 - Août 2023",
+            "title": "Responsable Technique plateformes de services VOIP",
+            "institution": "Orange France",
+            "url": "https://orange.com",
+            "description": ""
+          },
+          {
+            "date": "Septembre 2019 - Août 2022",
+            "title": "Apprenti Ingénieur d'Exploitation & Expertise des Plateformes de Service Voice and Messaging",
+            "institution": "Orange France",
+            "url": "https://orange.com",
+            "description": "Intégration d'une plateforme VOIP en Cloud Privé (IaaS) : <br>- Architecture des réseaux virtuels. <br>- Provisionning automatisé avec API Vra & Provider Terraform. <br>- Orchestration de l'installtion & Configuration de l'applicatif via Consul. <br>- Mise en place d'un Pipeline CI / CD."
+          },
+          {
+            "date": "Juin 2019 - Juillet 2019",
+            "title": "Administrateur Système Junior",
+            "institution": "Ilem Group",
+            "url": "https://new.ilemgroup.com",
+            "description": "Administrateur Système : <br> - Migration de serveur de monitoring. <br> - Projet de Migration du système d'hypervision & Migration de domaine Active directory pour un client."
+          },
+          {
+            "date": "Avril 2019 - Juin 2019",
+            "title": "Stage Administrateur Système",
+            "institution": "Ilem Group",
+            "url": "https://new.ilemgroup.com",
+            "description": "Moderniser le système de monitoring de l'entreprise et de ses clients : <br>- Migration automatisé vers Centreon 19.04. <br>- Automatisation de l'export de configuration.<br>- Déploiement automatisé d'un serveur de monitoring."
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Compétences",
+        "circles": [
+          { "title": "Administration Linux", "value": 85 },
+          { "title": "Administration Réseau", "value": 75 },
+          { "title": "Administration Windows", "value": 70 }
+        ],
+        "bars": [
+          { "title": "Pfsense", "value": 90 },
+          { "title": "Cisco CLI", "value": 85 },
+          { "title": "VMware Esxi & Vcenter", "value": 95 },
+          { "title": "Mikrotik CLI", "value": 65 },
+          { "title": "Ansible", "value": 70 },
+          { "title": "Terraform", "value": 80 }
+        ]
+      },
+      {
+        "id": "certifications",
+        "title": "Certification",
+        "items": [
+          {
+            "date": "2023",
+            "title": "Google Cloud Certified: Professional Cloud Architect",
+            "institution": "Voir la certification",
+            "url": "https://www.credential.net/bb294605-541c-4bd9-affd-647c54890651",
+            "description": ""
+          },
+          {
+            "date": "2022",
+            "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+            "institution": "Voir la certification",
+            "url": "https://www.credly.com/badges/15a0481d-6578-4d26-87e4-b6eae713b92c?source=linked_in_profile",
+            "description": ""
+          },
+          {
+            "date": "2019",
+            "title": "Cisco CCNA2 Routing & Switching",
+            "institution": "IUT d'Annecy",
+            "url": "https://www.iut-acy.univ-smb.fr/",
+            "description": "Certification Cisco CCNA2 Obtenue dans le cadre de ma formation DUT R&T."
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Me Contacter",
+    "available": "Je suis Disponible",
+    "available_desc": "Besoin d'un conseil IT ? Ou tout simplement discuter ?",
+    "message_btn": "Envoyez-moi un message !",
+    "items": [
+      { "title": "Adresse", "value": "Geneva, Switzerland", "link": "https://www.google.com/maps/search/Geneva", "icon": "map-pin" },
+      { "title": "Github", "value": "juliendcna", "link": "https://github.com/juliendcna", "icon": "github" },
+      { "title": "Adresse email", "value": "julien@dacunha.ovh", "link": "mailto:julien@dacunha.ovh", "icon": "mail" },
+      { "title": "LinkedIn", "value": "Julien Da Cunha", "link": "https://www.linkedin.com/in/julien-da-cunha", "icon": "linkedin" }
+    ]
+  },
+  "footer": {
+    "links_title": "Liens",
+    "questions_title": "Des questions?",
+    "links": [
+      { "text": "LAB - GoneIX", "url": "https://goneix.net" },
+      { "text": "Docs - GoneIX", "url": "https://doc.goneix.net" }
+    ]
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos de moi",
+    "resume": "CV",
+    "contact": "Contact"
+  }
+}

@@ -330,15 +330,38 @@ TxtRotate.prototype.tick = function() {
  }, delta);
 };
 
-window.onload = function() {
+// Expose TxtRotate to global scope so we can access it from translations.js
+window.TxtRotate = TxtRotate;
+
+window.initTxtRotate = function() {
  var elements = document.getElementsByClassName('txt-rotate');
  for (var i=0; i<elements.length; i++) {
    var toRotate = elements[i].getAttribute('data-rotate');
    var period = elements[i].getAttribute('data-period');
-   if (toRotate) {
-     new TxtRotate(elements[i], JSON.parse(toRotate), period);
+
+   // Clear existing instance if any (rudimentary check, better to store instances)
+   // But since TxtRotate modifies innerHTML, we might just need to restart it or let it handle itself.
+   // The issue is the old loop is still running via setTimeout.
+   // We need a way to stop the old loop.
+
+   if (elements[i]._txtRotate) {
+      elements[i]._txtRotate.isDeleting = false;
+      elements[i]._txtRotate.toRotate = JSON.parse(toRotate);
+      elements[i]._txtRotate.loopNum = 0;
+      elements[i]._txtRotate.txt = '';
+      // We don't need to create a new instance, just update the existing one if possible
+      // But TxtRotate structure above doesn't easily allow stopping.
+      // Let's attach the instance to the element so we can control it.
+   } else {
+       if (toRotate) {
+         elements[i]._txtRotate = new TxtRotate(elements[i], JSON.parse(toRotate), period);
+       }
    }
  }
+};
+
+window.onload = function() {
+ window.initTxtRotate();
  // INJECT CSS
  var css = document.createElement("style");
  css.type = "text/css";

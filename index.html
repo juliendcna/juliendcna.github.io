@@ -44,10 +44,20 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav nav ml-auto">
-          <li class="nav-item"><a href="#home-section" class="nav-link active"><span>Accueil</span></a></li>
-          <li class="nav-item"><a href="#about-section" class="nav-link"><span>À propos de moi</span></a></li>
-          <li class="nav-item"><a href="#resume-section" class="nav-link "><span>CV</span></a></li>
-          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+          <li class="nav-item"><a href="#home-section" class="nav-link active"><span data-i18n="nav_home">Accueil</span></a></li>
+          <li class="nav-item"><a href="#about-section" class="nav-link"><span data-i18n="nav_about">À propos de moi</span></a></li>
+          <li class="nav-item"><a href="#resume-section" class="nav-link "><span data-i18n="nav_resume">CV</span></a></li>
+          <li class="nav-item"><a href="#contact-section" class="nav-link"><span data-i18n="nav_contact">Contact</span></a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Language
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item lang-switch" href="#" data-lang="en" onclick="window.translator.setLanguage('en'); return false;">English</a>
+              <a class="dropdown-item lang-switch" href="#" data-lang="fr" onclick="window.translator.setLanguage('fr'); return false;">Français</a>
+              <a class="dropdown-item lang-switch" href="#" data-lang="es" onclick="window.translator.setLanguage('es'); return false;">Español</a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -59,10 +69,10 @@
         style="height: 184px;">
         <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center fadeInUp ftcoprogress-bar">
           <div class="text text-center">
-            <span class="subheading">Bienvenue sur mon Site !</span>
-            <h1>Julien Da Cunha</h1>
-            <h2>Je suis
-              <span class="txt-rotate" data-period="2000"
+            <span class="subheading" data-i18n="hero_subheading">Bienvenue sur mon Site !</span>
+            <h1 data-i18n="hero_name">Julien Da Cunha</h1>
+            <h2><span data-i18n="hero_intro">Je suis</span>
+              <span class="txt-rotate" data-period="2000" data-i18n="hero_roles"
                 data-rotate="[ &quot;Passionné!&quot;, &quot;Ingénieur Système&quot;, &quot;Ingénieur Réseau&quot;, &quot;Ingénieur Cloud & DevOps&quot; ]"><span
                   class="wrap"></span></span>
             </h2>
@@ -91,15 +101,15 @@
         <div class="col-md-6 col-lg-6 pl-md-5 py-5">
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate fadeInUp ftcoprogress-bar">
-              <h1 class="big">À propos</h1>
-              <h2 class="mb-4">À propos de moi</h2>
-              <p>Derrière un clavier depuis tout petit, je suis passionné par l'informatique en général et plus
+              <h1 class="big" data-i18n="about_heading_big">À propos</h1>
+              <h2 class="mb-4" data-i18n="about_heading">À propos de moi</h2>
+              <p data-i18n="about_desc">Derrière un clavier depuis tout petit, je suis passionné par l'informatique en général et plus
                 specifiquement des Réseaux IP, du Cloud et de la Virtualisation.</p>
               <ul class="about-info mt-4 px-md-0 px-2">
-                <li class="d-flex"><span>Nom:</span> <span>Julien Da Cunha</span></li>
-                <li class="d-flex"><span>Age:</span> <span>26 Ans</span></li>
-                <li class="d-flex"><span>Adresse:</span> <span>Geneva, Switzerland</span></li>
-                <li class="d-flex"><span>Email:</span> <span><a
+                <li class="d-flex"><span data-i18n="about_name_label">Nom:</span> <span data-i18n="about_name_value">Julien Da Cunha</span></li>
+                <li class="d-flex"><span data-i18n="about_age_label">Age:</span> <span data-i18n="about_age_value">26 Ans</span></li>
+                <li class="d-flex"><span data-i18n="about_address_label">Adresse:</span> <span data-i18n="about_address_value">Geneva, Switzerland</span></li>
+                <li class="d-flex"><span data-i18n="about_email_label">Email:</span> <span><a
                       href="mailto:julien@dacunha.ovh">julien@dacunha.ovh</a></span></li>
               </ul>
             </div>
@@ -108,12 +118,12 @@
             <div class="text">
               <p class="mb-4">
                 <span class="number" data-number="100">100</span>
-                <span>% Taux de disponibilité du <a href="https://status.goneix.net" target="_blank">Lab!</a></span>
+                <span data-i18n="about_availability_text">% Taux de disponibilité du <a href="https://status.goneix.net" target="_blank">Lab!</a></span>
               </p>
-              <p><button onclick="pascv" class="btn btn-primary py-3 px-3">Le CV publique arrive bientôt!</button></p>
+              <p><button onclick="pascv()" class="btn btn-primary py-3 px-3" data-i18n="about_cv_button">Le CV publique arrive bientôt!</button></p>
               <script>
                 function pascv() {
-                  alert("Le CV publique arrive bientôt!");
+                  alert(window.translator.getTranslation("cv_coming_soon_alert") || "Le CV publique arrive bientôt!");
                 }
               </script>
             </div>
@@ -154,25 +164,25 @@
         <div class="col-md-3">
           <nav id="navi">
             <ul>
-              <li><a href="#page-1" class="">Formation</a></li>
-              <li><a href="#page-2" class="">Experience</a></li>
-              <li><a href="#page-3" class="current">Compétences</a></li>
-              <li><a href="#page-4" class="">Certification</a></li>
+              <li><a href="#page-1" class="" data-i18n="resume_nav_education">Formation</a></li>
+              <li><a href="#page-2" class="" data-i18n="resume_nav_experience">Experience</a></li>
+              <li><a href="#page-3" class="current" data-i18n="resume_nav_skills">Compétences</a></li>
+              <li><a href="#page-4" class="" data-i18n="resume_nav_certification">Certification</a></li>
             </ul>
           </nav>
         </div>
         <div class="col-md-9">
           <div id="page-1" class="page one">
-            <h2 class="heading">Formation</h2>
+            <h2 class="heading" data-i18n="education_heading">Formation</h2>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
               <div class="icon d-flex align-items-center justify-content-center">
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2019-2022</span>
-                <h2>Ingénieur en informatique et réseaux de communication</h2>
+                <span class="date" data-i18n="edu_1_date">2019-2022</span>
+                <h2 data-i18n="edu_1_title">Ingénieur en informatique et réseaux de communication</h2>
                 <span class="position"><a href="https://www.cpe.fr/" target="_blank">CPE Lyon</a></span>
-                <p></p>
+                <p data-i18n="edu_1_desc"></p>
               </div>
             </div>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
@@ -180,10 +190,10 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2017-2019</span>
-                <h2>D.U.T Réseaux & Télécommunications</h2>
+                <span class="date" data-i18n="edu_2_date">2017-2019</span>
+                <h2 data-i18n="edu_2_title">D.U.T Réseaux & Télécommunications</h2>
                 <span class="position"><a href="https://www.iut-acy.univ-smb.fr/" target="_blank">IUT d'Annecy</a> | Université Savoie Mont-Blanc</span>
-                <p>Formation dans les Télécommunications et en Administrations Système & Réseaux Informatiques.</p>
+                <p data-i18n="edu_2_desc">Formation dans les Télécommunications et en Administrations Système & Réseaux Informatiques.</p>
               </div>
             </div>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
@@ -191,22 +201,22 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2015-2017</span>
-                <h2>Baccalauréat STI2D (SIN)</h2>
+                <span class="date" data-i18n="edu_3_date">2015-2017</span>
+                <h2 data-i18n="edu_3_title">Baccalauréat STI2D (SIN)</h2>
                 <span class="position"><a href="http://www.lycee-benjamin-franklin.fr/" target="_blank">Lycée Benjamin Franklin</a> | Orléans, France</span>
-                <p>Spécialisation : Systèmes d'Information et Numérique (SIN). <br>Mention Bien.</p>
+                <p data-i18n="edu_3_desc">Spécialisation : Systèmes d'Information et Numérique (SIN). <br>Mention Bien.</p>
               </div>
             </div>
           </div>
           <div id="page-2" class="page two">
-            <h2 class="heading">Experience</h2>
+            <h2 class="heading" data-i18n="experience_heading">Experience</h2>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
               <div class="icon d-flex align-items-center justify-content-center">
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">Septembre 2023 - Aujourd'hui</span>
-                <h2>Cloud & DevOps Engineer</h2>
+                <span class="date" data-i18n="exp_1_date">Septembre 2023 - Aujourd'hui</span>
+                <h2 data-i18n="exp_1_title">Cloud & DevOps Engineer</h2>
                 <span class="position"><a href="https://alpian.com" target="new_blank">Alpian</a></span>
               </div>
             </div>            
@@ -215,8 +225,8 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">Septembre 2022 - Août 2023</span>
-                <h2>Responsable Technique plateformes de services VOIP</h2>
+                <span class="date" data-i18n="exp_2_date">Septembre 2022 - Août 2023</span>
+                <h2 data-i18n="exp_2_title">Responsable Technique plateformes de services VOIP</h2>
                 <span class="position"><a href="https://orange.com" target="new_blank">Orange France</a></span>
               </div>
             </div>
@@ -225,10 +235,10 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">Septembre 2019 - Août 2022</span>
-                <h2>Apprenti Ingénieur d'Exploitation & Expertise des Plateformes de Service Voice and Messaging</h2>
+                <span class="date" data-i18n="exp_3_date">Septembre 2019 - Août 2022</span>
+                <h2 data-i18n="exp_3_title">Apprenti Ingénieur d'Exploitation & Expertise des Plateformes de Service Voice and Messaging</h2>
                 <span class="position"><a href="https://orange.com" target="new_blank">Orange France</a></span>
-                <p>Intégration d'une plateforme VOIP en Cloud Privé (IaaS) : <br>- Architecture des réseaux virtuels.
+                <p data-i18n="exp_3_desc">Intégration d'une plateforme VOIP en Cloud Privé (IaaS) : <br>- Architecture des réseaux virtuels.
                   <br>- Provisionning automatisé avec API Vra & Provider Terraform. <br>- Orchestration de l'installtion
                   & Configuration de l'applicatif via Consul. <br>- Mise en place d'un Pipeline CI / CD.</p>
               </div>
@@ -238,10 +248,10 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">Juin 2019 - Juillet 2019</span>
-                <h2>Administrateur Système Junior</h2>
+                <span class="date" data-i18n="exp_4_date">Juin 2019 - Juillet 2019</span>
+                <h2 data-i18n="exp_4_title">Administrateur Système Junior</h2>
                 <span class="position"><a href="https://new.ilemgroup.com" target="new_blank">Ilem Group</a></span>
-                <p>Administrateur Système : <br> - Migration de serveur de monitoring. <br> - Projet de Migration du
+                <p data-i18n="exp_4_desc">Administrateur Système : <br> - Migration de serveur de monitoring. <br> - Projet de Migration du
                   système d'hypervision & Migration de domaine Active directory pour un client.</p>
               </div>
             </div>
@@ -250,21 +260,21 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">Avril 2019 - Juin 2019</span>
-                <h2>Stage Administrateur Système</h2>
+                <span class="date" data-i18n="exp_5_date">Avril 2019 - Juin 2019</span>
+                <h2 data-i18n="exp_5_title">Stage Administrateur Système</h2>
                 <span class="position"><a href="https://new.ilemgroup.com" target="new_blank">Ilem Group</a></span>
-                <p>Moderniser le système de monitoring de l'entreprise et de ses clients : <br>- Migration automatisé
+                <p data-i18n="exp_5_desc">Moderniser le système de monitoring de l'entreprise et de ses clients : <br>- Migration automatisé
                   vers <a href="https://centreon.com/" target="_blank" style="color: #a0f669; font-weight: 900">Centreon</a> 19.04. <br>- Automatisation de l'export de configuration.<br>- Déploiement automatisé d'un
                   serveur de monitoring.</p>
               </div>
             </div>
           </div>
           <div id="page-3" class="page three">
-            <h2 class="heading">Compétences</h2>
+            <h2 class="heading" data-i18n="skills_heading">Compétences</h2>
             <div class="row progress-circle mb-5">
               <div class="col-lg-4 mb-4">
                 <div class="bg-white rounded-lg shadow p-4">
-                  <h2 class="h5 font-weight-bold text-center mb-4">Administration Linux</h2>
+                  <h2 class="h5 font-weight-bold text-center mb-4" data-i18n="skill_linux">Administration Linux</h2>
 
                   <div class="progress mx-auto" data-value="80">
                     <span class="progress-left">
@@ -282,7 +292,7 @@
               </div>
               <div class="col-lg-4 mb-4">
                 <div class="bg-white rounded-lg shadow p-4">
-                  <h2 class="h5 font-weight-bold text-center mb-4">Administration Réseau</h2>
+                  <h2 class="h5 font-weight-bold text-center mb-4" data-i18n="skill_network">Administration Réseau</h2>
 
                   <div class="progress mx-auto" data-value="75">
                     <span class="progress-left">
@@ -300,7 +310,7 @@
               </div>
               <div class="col-lg-4 mb-4">
                 <div class="bg-white rounded-lg shadow p-4">
-                  <h2 class="h5 font-weight-bold text-center mb-4">Administration Windows</h2>
+                  <h2 class="h5 font-weight-bold text-center mb-4" data-i18n="skill_windows">Administration Windows</h2>
 
                   <div class="progress mx-auto" data-value="70">
                     <span class="progress-left">
@@ -320,7 +330,7 @@
             <div class="row">
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>Pfsense</h3>
+                  <h3 data-i18n="skill_pfsense">Pfsense</h3>
                   <div class="progress">
                     <div class=" progress-bar color-1" role="progressbar" aria-valuenow="90" aria-valuemin="0"
                       aria-valuemax="100" style="width:90%">
@@ -331,7 +341,7 @@
               </div>
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>Cisco CLI</h3>
+                  <h3 data-i18n="skill_cisco">Cisco CLI</h3>
                   <div class="progress">
                     <div class=" progress-bar color-2" role="progressbar" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100" style="width:85%">
@@ -342,7 +352,7 @@
               </div>
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>VMware Esxi & Vcenter</h3>
+                  <h3 data-i18n="skill_vmware">VMware Esxi & Vcenter</h3>
                   <div class="progress">
                     <div class=" progress-bar color-3" role="progressbar" aria-valuenow="95" aria-valuemin="0"
                       aria-valuemax="100" style="width:95%">
@@ -353,7 +363,7 @@
               </div>
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>Mikrotik CLI</h3>
+                  <h3 data-i18n="skill_mikrotik">Mikrotik CLI</h3>
                   <div class="progress">
                     <div class=" progress-bar color-4" role="progressbar" aria-valuenow="65" aria-valuemin="0"
                       aria-valuemax="100" style="width:65%">
@@ -364,7 +374,7 @@
               </div>
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>Ansible</h3>
+                  <h3 data-i18n="skill_ansible">Ansible</h3>
                   <div class="progress">
                     <div class=" progress-bar color-5" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                       aria-valuemax="100" style="width:70%">
@@ -375,7 +385,7 @@
               </div>
               <div class="col-md-6 animate-box">
                 <div class="progress-wrap ftco-animate fadeInUp ftcoprogress-bar">
-                  <h3>Terraform</h3>
+                  <h3 data-i18n="skill_terraform">Terraform</h3>
                   <div class="progress">
                     <div class=" progress-bar color-6" role="progressbar" aria-valuenow="80" aria-valuemin="0"
                       aria-valuemax="100" style="width:80%">
@@ -387,16 +397,16 @@
             </div>
           </div>
           <div id="page-4" class="page four">
-            <h2 class="heading">Certification</h2>
+            <h2 class="heading" data-i18n="certification_heading">Certification</h2>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
               <div class="icon d-flex align-items-center justify-content-center">
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2023</span>
-                <h2>Google Cloud Certified: Professional Cloud Architect</h2>
-                <span class="position"><a href="https://www.credential.net/bb294605-541c-4bd9-affd-647c54890651" target="_blank">Voir la certification</a></span>
-                <p></p>
+                <span class="date" data-i18n="cert_1_date">2023</span>
+                <h2 data-i18n="cert_1_title">Google Cloud Certified: Professional Cloud Architect</h2>
+                <span class="position"><a href="https://www.credential.net/bb294605-541c-4bd9-affd-647c54890651" target="_blank" data-i18n="cert_view">Voir la certification</a></span>
+                <p data-i18n="cert_1_desc"></p>
               </div>
             </div>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
@@ -404,10 +414,10 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2022</span>
-                <h2>Microsoft Certified: Azure Fundamentals (AZ-900)</h2>
-                <span class="position"><a href="https://www.credly.com/badges/15a0481d-6578-4d26-87e4-b6eae713b92c?source=linked_in_profile" target="_blank">Voir la certification</a></span>
-                <p></p>
+                <span class="date" data-i18n="cert_2_date">2022</span>
+                <h2 data-i18n="cert_2_title">Microsoft Certified: Azure Fundamentals (AZ-900)</h2>
+                <span class="position"><a href="https://www.credly.com/badges/15a0481d-6578-4d26-87e4-b6eae713b92c?source=linked_in_profile" target="_blank" data-i18n="cert_view">Voir la certification</a></span>
+                <p data-i18n="cert_2_desc"></p>
               </div>
             </div>
             <div class="resume-wrap d-flex ftco-animate fadeInUp ftcoprogress-bar">
@@ -415,10 +425,10 @@
                 <span class="flaticon-ideas"></span>
               </div>
               <div class="text pl-3">
-                <span class="date">2019</span>
-                <h2>Cisco CCNA2 Routing & Switching</h2>
+                <span class="date" data-i18n="cert_3_date">2019</span>
+                <h2 data-i18n="cert_3_title">Cisco CCNA2 Routing & Switching</h2>
                 <span class="position"><a href="https://www.iut-acy.univ-smb.fr/" target="_blank">IUT d'Annecy</a></span>
-                <p>Certification Cisco CCNA2 Obtenue dans le cadre de ma formation DUT R&T.</p>
+                <p data-i18n="cert_3_desc">Certification Cisco CCNA2 Obtenue dans le cadre de ma formation DUT R&T.</p>
               </div>
             </div>
           </div>
@@ -432,9 +442,9 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-7 ftco-animate text-center">
-          <h2>Je suis <span>Disponible</span></h2>
-          <p>Besoin d'un conseil IT ? <br> Ou tout simplement discuter ?</p>
-          <p class="mb-0"><a href="mailto:julien@dacunha.ovh" class="btn btn-primary py-3 px-5">Envoyez-moi un message
+          <h2><span data-i18n="hire_title_prefix">Je suis</span> <span data-i18n="hire_title_suffix">Disponible</span></h2>
+          <p data-i18n="hire_desc">Besoin d'un conseil IT ? <br> Ou tout simplement discuter ?</p>
+          <p class="mb-0"><a href="mailto:julien@dacunha.ovh" class="btn btn-primary py-3 px-5" data-i18n="hire_button">Envoyez-moi un message
               !</a></p>
         </div>
       </div>
@@ -444,8 +454,8 @@
     <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section text-center ftco-animate">
-          <h1 class="big big-2">Contact</h1>
-          <h2 class="mb-4">Me Contacter</h2>
+          <h1 class="big big-2" data-i18n="contact_heading_big">Contact</h1>
+          <h2 class="mb-4" data-i18n="contact_heading">Me Contacter</h2>
         </div>
       </div>
       <div class="row d-flex contact-info mb-5">
@@ -455,7 +465,7 @@
               <span class="icon-map-signs"></span>
             </div>
             <div>
-              <h3 class="mb-4">Adresse</h3>
+              <h3 class="mb-4" data-i18n="contact_address_title">Adresse</h3>
               <p><a href="https://www.google.com/maps/search/Geneva" target="new_blank">Geneva, Switzerland</a></p>
             </div>
           </div>
@@ -465,7 +475,7 @@
             <div class="icon d-flex align-items-center justify-content-center">
               <span class="icon-github"></span>
             </div>
-            <h3 class="mb-4">Github</h3>
+            <h3 class="mb-4" data-i18n="contact_github_title">Github</h3>
             <p><a href="https://github.com/juliendcna" target="new_blank">juliendcna</a></p>
           </div>
         </div>
@@ -475,7 +485,7 @@
               <span class="icon-paper-plane"></span>
             </div>
             <div>
-              <h3 class="mb-4">Adresse email</h3>
+              <h3 class="mb-4" data-i18n="contact_email_title">Adresse email</h3>
               <p><a href="mailto:julien@dacunha.ovh">julien@dacunha.ovh</a></p>
             </div>
           </div>
@@ -486,7 +496,7 @@
               <span class="icon-linkedin"></span>
             </div>
             <div>
-              <h3 class="mb-4">LinkedIn</h3>
+              <h3 class="mb-4" data-i18n="contact_linkedin_title">LinkedIn</h3>
               <p><a href="https://www.linkedin.com/in/julien-da-cunha">Julien Da Cunha</a></p>
             </div>
           </div>
@@ -502,7 +512,7 @@
         </div>
         <div class="col-md">
           <div class="ftco-footer-widget mb-4 ml-md-4">
-            <h2 class="ftco-heading-2">Liens</h2>
+            <h2 class="ftco-heading-2" data-i18n="footer_links_title">Liens</h2>
             <ul class="list-unstyled">
               <li><iframe src="https://status.goneix.net/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no"></iframe></li>
               <li><a href="https://goneix.net" target="new_blank"><span
@@ -516,7 +526,7 @@
         </div>
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Des questions?</h2>
+            <h2 class="ftco-heading-2" data-i18n="footer_questions_title">Des questions?</h2>
             <div class="block-23 mb-3">
               <ul>
                 <li><a href="mailto:julien@dacunha.ovh"><span class="icon icon-envelope"></span><span
@@ -529,7 +539,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 text-center">
-          <p>Made with <i class="icon-heart color-danger" aria-hidden="true"></i></p>
+          <p><span data-i18n="footer_made_with">Made with</span> <i class="icon-heart color-danger" aria-hidden="true"></i></p>
         </div>
       </div>
     </div>
@@ -553,6 +563,7 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }

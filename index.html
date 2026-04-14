@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html lang="FR">
-
-<script src="https://betteruptime.com/widgets/announcement.js" data-id="136360" async="async" type="text/javascript"></script>
+<html lang="fr">
 
 <head>
   <title>Julien Da Cunha</title>
   <base href="/">
   <meta charset="utf-8">
-  <link rel="shortcut icon" href="fonts/favicon.svg" type="image/x-icon">  
+  <link rel="shortcut icon" href="fonts/favicon.svg" type="image/x-icon">
+  <link rel="preload" href="images/about.wepb" as="image">
+  <link rel="preload" href="images/bg_1.wepb" as="image">  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <meta name="description" content="Julien Da Cunha — Cloud &amp; DevOps Engineer based in Geneva, Switzerland. Specialising in Kubernetes, Terraform, GCP, and network infrastructure.">
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <!-- Critical CSS -->
   <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/aos.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Non-critical CSS loaded asynchronously -->
+  <link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/owl.theme.default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+  </noscript>
   <style>
     .scrollax-performance,
     .scrollax-performance *,
@@ -525,7 +538,7 @@
           <div class="ftco-footer-widget mb-4 ml-md-4">
             <h2 class="ftco-heading-2" data-i18n="footer_links_title">Liens</h2>
             <ul class="list-unstyled">
-              <li><iframe src="https://status.goneix.net/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no"></iframe></li>
+              <li><iframe src="https://status.goneix.net/badge?theme=dark" width="250" height="30" frameborder="0" scrolling="no" loading="lazy"></iframe></li>
               <li><a href="https://goneix.net" target="new_blank"><span
                     class="icon-long-arrow-right mr-2"></span>LAB - GoneIX</a></li>
               <li><a href="https://doc.goneix.net" target="new_blank"><span
@@ -575,6 +588,7 @@
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/translations.js"></script>
+  <script src="https://betteruptime.com/widgets/announcement.js" data-id="136360" async type="text/javascript"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }

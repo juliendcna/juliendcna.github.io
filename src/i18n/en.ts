@@ -159,8 +159,19 @@ const en: Dictionary = {
         items: ['Cisco CLI', 'Mikrotik CLI', 'pfSense', 'VOIP platforms'],
       },
       {
-        name: 'Systems & virtualization',
-        items: ['Linux administration', 'Windows administration', 'VMware ESXi & vCenter', 'Centreon monitoring'],
+        name: 'API gateways & service mesh',
+        items: ['Kong', 'Istio', 'Traefik', 'NGINX'],
+      },
+      {
+        name: 'Systems & observability',
+        items: [
+          'Linux administration',
+          'Windows administration',
+          'VMware ESXi & vCenter',
+          'Prometheus & Grafana',
+          'OpenTelemetry',
+          'Centreon monitoring',
+        ],
       },
     ],
   },

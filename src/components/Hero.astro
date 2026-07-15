@@ -12,8 +12,11 @@ const dict = t(lang);
 const roles = dict.hero.roles;
 const staticRole = roles[roles.length - 1];
 
-/* disciplines line derives from the translated skill group names */
-const disciplines = dict.skills.groups.map((g) => g.name).join(' / ');
+/* disciplines line: the three broad domains (first, second, last skill group) */
+const groups = dict.skills.groups;
+const disciplines = [groups[0], groups[1], groups[groups.length - 1]]
+  .map((g) => g!.name)
+  .join(' / ');
 
 const stack = [
   'Kubernetes',

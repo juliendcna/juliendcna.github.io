@@ -38,7 +38,7 @@ const facts = [
         }
       </dl>
       <p class="uptime">
-        <span class="value mono">100<sup>%</sup></span>
+        <span class="value">100<sup>%</sup></span>
         <a class="link" href="https://status.dacunha.ovh/" target="_blank" rel="noopener">{dict.about.uptimeLabel}</a>
       </p>
       <p class="cv mono muted">// {dict.about.cvNote}</p>
@@ -49,7 +49,7 @@ const facts = [
 <style>
   .cols {
     display: grid;
-    gap: clamp(2rem, 4vw, 3.5rem);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
     align-items: start;
   }
 
@@ -61,48 +61,45 @@ const facts = [
 
   .portrait {
     position: relative;
-    border: 1px solid var(--rule);
-    background: var(--card);
-    padding: 0.75rem;
-  }
-
-  .portrait::after {
-    content: '';
-    position: absolute;
-    inset: 0.75rem;
-    pointer-events: none;
-    border: 1px solid var(--rule-faint);
+    border: 1px solid var(--hairline);
+    background: var(--night-raised);
+    padding: 0.85rem;
+    border-radius: 2px;
   }
 
   .portrait :global(img) {
     width: 100%;
     height: auto;
-    filter: saturate(0.92);
+    filter: grayscale(0.25) contrast(1.03) brightness(0.94);
+    border-radius: 1px;
   }
 
   .body {
-    font-size: 1.1875rem;
-    line-height: 1.6;
-    max-width: 34em;
-    margin-bottom: 2rem;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    max-width: 28em;
+    margin-bottom: 2.5rem;
   }
 
   .facts {
-    font-size: 0.9375rem;
-    border-top: 1px solid var(--rule);
-    margin-bottom: 2.25rem;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--hairline);
+    margin-bottom: 2.5rem;
   }
 
   .fact {
     display: grid;
-    grid-template-columns: 8.5rem 1fr;
+    grid-template-columns: 9rem 1fr;
     gap: 1rem;
-    padding-block: 0.7rem;
-    border-bottom: 1px solid var(--rule);
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--hairline);
   }
 
   .fact dt {
-    color: var(--ink-soft);
+    color: var(--dim);
   }
 
   .fact dt::after {
@@ -112,18 +109,21 @@ const facts = [
   .uptime {
     display: flex;
     align-items: baseline;
-    gap: 0.9rem;
+    gap: 1rem;
     margin-bottom: 1.5rem;
   }
 
   .uptime .value {
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--glacial);
   }
 
   .uptime sup {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .cv {

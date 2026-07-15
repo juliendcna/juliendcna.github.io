@@ -30,7 +30,7 @@ const dict = t(lang);
 <style>
   .groups {
     display: grid;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: clamp(2rem, 4vw, 3rem);
   }
 
   @media (min-width: 780px) {
@@ -40,32 +40,30 @@ const dict = t(lang);
   }
 
   .group {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    padding: 1.5rem;
+    border: 1px solid var(--hairline);
+    background: var(--night-raised);
+    border-radius: 2px;
+    padding: 1.75rem;
+    transition: border-color 250ms ease;
+  }
+
+  .group:hover {
+    border-color: color-mix(in srgb, var(--glacial) 40%, transparent);
   }
 
   .group-name {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  .group-name::after {
-    content: ':';
-    color: var(--ink-soft);
-  }
-
-  .group ul {
-    display: grid;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--glacial);
+    margin-bottom: 1.25rem;
   }
 
   .group li {
     font-size: 0.9375rem;
-    padding-block: 0.55rem;
-    border-top: 1px solid var(--rule-faint);
+    color: var(--bone);
+    padding-block: 0.65rem;
+    border-top: 1px solid var(--hairline-faint);
   }
 </style>

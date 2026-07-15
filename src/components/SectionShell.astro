@@ -9,11 +9,9 @@ const { id, keyLabel, heading } = Astro.props;
 ---
 
 <section class="section" id={id}>
-  <div class="wrap section-grid">
-    <p class="key">{keyLabel}</p>
-    <div>
-      <h2 class="heading" data-reveal>{heading}</h2>
-      <slot />
-    </div>
+  <div class="wrap">
+    <p class="eyebrow"><span class="tick">[</span>{keyLabel}<span class="tick">]</span></p>
+    <h2 class="heading" data-reveal>{heading}</h2>
+    <slot />
   </div>
 </section>

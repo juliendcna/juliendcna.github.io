@@ -26,8 +26,10 @@ const channels = [
 ---
 
 <SectionShell id="contact" keyLabel={dict.contact.key} heading={dict.contact.heading}>
-  <p class="pitch" data-reveal>{dict.contact.body}</p>
-  <p data-reveal><a class="btn btn--solid" href="mailto:julien@dacunha.ovh">{dict.contact.button}</a></p>
+  <p class="pitch muted" data-reveal>{dict.contact.body}</p>
+  <p class="big" data-reveal>
+    <a href="mailto:julien@dacunha.ovh" aria-label={dict.contact.button}>julien@dacunha.ovh</a>
+  </p>
   <ul class="channels">
     {
       channels.map((c) => (
@@ -44,15 +46,36 @@ const channels = [
 
 <style>
   .pitch {
-    font-size: 1.1875rem;
+    font-size: 1.125rem;
     max-width: 34em;
-    margin-bottom: 1.75rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .big a {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    font-size: clamp(1.7rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--bone);
+    background-image: linear-gradient(var(--glacial), var(--glacial));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 450ms cubic-bezier(0.22, 1, 0.36, 1), color 300ms ease;
+  }
+
+  .big a:hover {
+    color: var(--glacial);
+    background-size: 100% 2px;
   }
 
   .channels {
     display: grid;
-    gap: 1.5rem 2rem;
-    margin-top: 3rem;
+    gap: 1.75rem 2rem;
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--hairline);
   }
 
   @media (min-width: 720px) {
@@ -62,9 +85,9 @@ const channels = [
   }
 
   .label {
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
   }
 </style>

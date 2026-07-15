@@ -40,67 +40,68 @@ const anchors = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--night) 72%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline-faint);
   }
 
   .bar {
     display: flex;
     align-items: center;
     gap: 2rem;
-    height: 3.75rem;
+    height: 4rem;
   }
 
   .brand {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
   }
 
   .tld {
-    color: var(--accent);
+    color: var(--glacial);
   }
 
   .anchors {
     display: none;
-    gap: 1.75rem;
+    gap: 2rem;
     margin-inline: auto;
   }
 
   .anchors a {
-    font-size: 0.9375rem;
-    color: var(--ink-soft);
-    transition: color 140ms ease;
+    font-size: 0.875rem;
+    font-weight: 450;
+    color: var(--dim);
+    transition: color 160ms ease;
   }
 
   .anchors a:hover {
-    color: var(--ink);
+    color: var(--bone);
   }
 
   .langs {
     display: flex;
-    gap: 0.9rem;
+    gap: 1rem;
     margin-left: auto;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
   }
 
   .langs a {
-    color: var(--ink-soft);
+    color: var(--dim);
     padding-block: 0.2rem;
-    border-bottom: 2px solid transparent;
-    transition: color 140ms ease;
+    border-bottom: 1px solid transparent;
+    transition: color 160ms ease;
   }
 
   .langs a:hover {
-    color: var(--ink);
+    color: var(--bone);
   }
 
   .langs a.current {
-    color: var(--accent);
-    font-weight: 500;
-    border-bottom-color: var(--accent);
+    color: var(--glacial);
+    border-bottom-color: var(--glacial);
   }
 
   @media (min-width: 880px) {

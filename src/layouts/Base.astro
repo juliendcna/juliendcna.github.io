@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, pathForLocale, locales, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+const site = Astro.site ?? new URL('https://dacunha.ovh');
+const canonical = new URL(pathForLocale(lang), site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Julien Da Cunha',
+  jobTitle: 'Cloud & DevOps Engineer',
+  url: site.href,
+  email: 'julien@dacunha.ovh',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Geneva',
+    addressCountry: 'CH',
+  },
+  sameAs: ['https://www.linkedin.com/in/julien-da-cunha', 'https://github.com/juliendcna'],
+  knowsAbout: [
+    'Kubernetes',
+    'Terraform',
+    'Google Cloud Platform',
+    'DevOps',
+    'Network Infrastructure',
+    'Linux Administration',
+  ],
+};
+
+const ogLocales: Record<Locale, string> = { en: 'en_GB', fr: 'fr_FR', es: 'es_ES' };
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{dict.meta.title}</title>
+    <meta name="description" content={dict.meta.description} />
+    <meta name="author" content="Julien Da Cunha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0d10" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f1ec" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {locales.map((l) => <link rel="alternate" hreflang={l} href={new URL(pathForLocale(l), site).href} />)}
+    <link rel="alternate" hreflang="x-default" href={site.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={dict.meta.title} />
+    <meta property="og:description" content={dict.meta.description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={new URL('/images/portrait.jpg', site).href} />
+    <meta property="og:locale" content={ogLocales[lang]} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={dict.meta.title} />
+    <meta name="twitter:description" content={dict.meta.description} />
+    <meta name="twitter:image" content={new URL('/images/portrait.jpg', site).href} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{dict.a11y.skipToContent}</a>
+    <Header lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      const revealed = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+        );
+        revealed.forEach((el) => io.observe(el));
+      } else {
+        document.documentElement.classList.add('no-observer');
+      }
+    </script>
+  </body>
+</html>

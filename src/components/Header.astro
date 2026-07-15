@@ -1,0 +1,116 @@
+---
+import { t, pathForLocale, locales, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+
+const anchors = [
+  { href: '#about', label: dict.nav.about },
+  { href: '#experience', label: dict.nav.experience },
+  { href: '#education', label: dict.nav.education },
+  { href: '#skills', label: dict.nav.skills },
+  { href: '#contact', label: dict.nav.contact },
+];
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand mono" href={pathForLocale(lang)}>dacunha<span class="tld">.ovh</span></a>
+    <nav class="anchors" aria-label="Sections">
+      {anchors.map((a) => <a href={a.href}>{a.label}</a>)}
+    </nav>
+    <nav class="langs mono" aria-label={dict.a11y.languageMenu}>
+      {
+        locales.map((l) => (
+          <a href={pathForLocale(l)} class:list={[{ current: l === lang }]} aria-current={l === lang ? 'page' : undefined} lang={l}>
+            {l.toUpperCase()}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--night) 72%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline-faint);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 4rem;
+  }
+
+  .brand {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .tld {
+    color: var(--glacial);
+  }
+
+  .anchors {
+    display: none;
+    gap: 2rem;
+    margin-inline: auto;
+  }
+
+  .anchors a {
+    font-size: 0.875rem;
+    font-weight: 450;
+    color: var(--dim);
+    transition: color 160ms ease;
+  }
+
+  .anchors a:hover {
+    color: var(--bone);
+  }
+
+  .langs {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .langs a {
+    color: var(--dim);
+    padding-block: 0.2rem;
+    border-bottom: 1px solid transparent;
+    transition: color 160ms ease;
+  }
+
+  .langs a:hover {
+    color: var(--bone);
+  }
+
+  .langs a.current {
+    color: var(--glacial);
+    border-bottom-color: var(--glacial);
+  }
+
+  @media (min-width: 880px) {
+    .anchors {
+      display: flex;
+    }
+
+    .langs {
+      margin-left: 0;
+    }
+  }
+</style>

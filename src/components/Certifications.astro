@@ -1,0 +1,92 @@
+---
+import SectionShell from './SectionShell.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+---
+
+<SectionShell id="certifications" keyLabel={dict.certifications.key} heading={dict.certifications.heading}>
+  <ul class="certs">
+    {
+      dict.certifications.items.map((cert) => (
+        <li class="cert" data-reveal>
+          <p class="year">{cert.year}</p>
+          <div>
+            <h3 class="title">{cert.title}</h3>
+            <p class="org mono muted">{cert.org}</p>
+            {cert.note && <p class="note muted">{cert.note}</p>}
+          </div>
+          {cert.url && (
+            <a class="view mono link" href={cert.url} target="_blank" rel="noopener">
+              {dict.certifications.view} ↗
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</SectionShell>
+
+<style>
+  .cert {
+    display: grid;
+    gap: 0.4rem 2.5rem;
+    padding-block: 1.75rem;
+    padding-inline: 0.75rem;
+    border-top: 1px solid var(--hairline);
+    align-items: baseline;
+    transition: background 250ms ease;
+  }
+
+  .cert:hover {
+    background: var(--glacial-wash);
+  }
+
+  .cert:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  @media (min-width: 720px) {
+    .cert {
+      grid-template-columns: 14rem minmax(0, 1fr) auto;
+    }
+  }
+
+  .year {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--glacial);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .org {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .note {
+    font-size: 0.9375rem;
+    margin-top: 0.3rem;
+  }
+
+  .view {
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+</style>

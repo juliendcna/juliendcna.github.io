@@ -1,0 +1,90 @@
+---
+import SectionShell from './SectionShell.astro';
+import TechIcon from './TechIcon.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+---
+
+<SectionShell id="skills" keyLabel={dict.skills.key} heading={dict.skills.heading}>
+  <div class="groups">
+    {
+      dict.skills.groups.map((group) => (
+        <div class="group" data-reveal>
+          <h3 class="group-name mono">{group.name}</h3>
+          <ul>
+            {group.items.map((item) => (
+              <li>
+                <span class="icon-slot">{item.icon && <TechIcon slug={item.icon} size={17} />}</span>
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</SectionShell>
+
+<style>
+  .groups {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  @media (min-width: 780px) {
+    .groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .group {
+    border: 1px solid var(--hairline);
+    background: var(--night-raised);
+    border-radius: 2px;
+    padding: 1.75rem;
+    transition: border-color 250ms ease;
+  }
+
+  .group:hover {
+    border-color: color-mix(in srgb, var(--glacial) 40%, transparent);
+  }
+
+  .group-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--glacial);
+    margin-bottom: 1.25rem;
+  }
+
+  .group li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9375rem;
+    color: var(--bone);
+    padding-block: 0.65rem;
+    border-top: 1px solid var(--hairline-faint);
+  }
+
+  .icon-slot {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    color: var(--dim);
+    transition: color 250ms ease;
+  }
+
+  .group li:hover .icon-slot {
+    color: var(--glacial);
+  }
+</style>

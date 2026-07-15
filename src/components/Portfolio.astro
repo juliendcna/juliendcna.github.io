@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import SectionShell from './SectionShell.astro';
+import Timeline from './Timeline.astro';
+import Certifications from './Certifications.astro';
+import Skills from './Skills.astro';
+import Contact from './Contact.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+---
+
+<Base lang={lang}>
+  <Hero lang={lang} />
+  <About lang={lang} />
+  <SectionShell id="experience" keyLabel={dict.experience.key} heading={dict.experience.heading}>
+    <Timeline items={dict.experience.items} />
+  </SectionShell>
+  <SectionShell id="education" keyLabel={dict.education.key} heading={dict.education.heading}>
+    <Timeline items={dict.education.items} />
+  </SectionShell>
+  <Certifications lang={lang} />
+  <Skills lang={lang} />
+  <Contact lang={lang} />
+</Base>

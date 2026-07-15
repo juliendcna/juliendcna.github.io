@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import SectionShell from './SectionShell.astro';
+import portrait from '../assets/portrait.jpg';
+import { t, currentAge, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+const age = currentAge();
+
+const facts = [
+  { label: dict.about.factName, value: 'Julien Da Cunha' },
+  { label: dict.about.factAge, value: `${age} ${dict.about.factAgeUnit}` },
+  { label: dict.about.factLocation, value: 'Geneva, Switzerland' },
+  { label: dict.about.factEmail, value: 'julien@dacunha.ovh', href: 'mailto:julien@dacunha.ovh' },
+];
+---
+
+<SectionShell id="about" keyLabel={dict.about.key} heading={dict.about.heading}>
+  <div class="cols">
+    <figure class="portrait" data-reveal>
+      <Image src={portrait} alt="Julien Da Cunha" width={720} densities={[1, 2]} loading="lazy" />
+    </figure>
+    <div class="text" data-reveal>
+      <p class="body">{dict.about.body}</p>
+      <dl class="facts mono">
+        {
+          facts.map((f) => (
+            <div class="fact">
+              <dt>{f.label}</dt>
+              <dd>{f.href ? <a class="link" href={f.href}>{f.value}</a> : f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="uptime">
+        <span class="value">100<sup>%</sup></span>
+        <a class="link" href="https://status.dacunha.ovh/" target="_blank" rel="noopener">{dict.about.uptimeLabel}</a>
+      </p>
+      <p class="cv mono muted">// {dict.about.cvNote}</p>
+    </div>
+  </div>
+</SectionShell>
+
+<style>
+  .cols {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  @media (min-width: 780px) {
+    .cols {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+
+  .portrait {
+    position: relative;
+    border: 1px solid var(--hairline);
+    background: var(--night-raised);
+    padding: 0.85rem;
+    border-radius: 2px;
+  }
+
+  .portrait :global(img) {
+    width: 100%;
+    height: auto;
+    filter: grayscale(0.25) contrast(1.03) brightness(0.94);
+    border-radius: 1px;
+  }
+
+  .body {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    max-width: 28em;
+    margin-bottom: 2.5rem;
+  }
+
+  .facts {
+    font-size: 0.875rem;
+    border-top: 1px solid var(--hairline);
+    margin-bottom: 2.5rem;
+  }
+
+  .fact {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .fact dt {
+    color: var(--dim);
+  }
+
+  .fact dt::after {
+    content: ':';
+  }
+
+  .uptime {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .uptime .value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--glacial);
+  }
+
+  .uptime sup {
+    font-size: 1.25rem;
+  }
+
+  .cv {
+    font-size: 0.8125rem;
+  }
+</style>

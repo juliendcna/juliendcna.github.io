@@ -1,0 +1,88 @@
+---
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+const year = new Date().getFullYear();
+
+const links = [{ label: dict.footer.statusLink, href: 'https://status.dacunha.ovh/' }];
+---
+
+<footer class="footer">
+  <div class="wrap grid">
+    <div>
+      <p class="mono brand">dacunha<span class="tld">.ovh</span></p>
+      <p class="muted small">© {year} Julien Da Cunha — {dict.footer.madeWith} <span class="heart" aria-hidden="true">♥</span></p>
+    </div>
+    <nav aria-label={dict.footer.linksTitle}>
+      <p class="mono label muted">{dict.footer.linksTitle}</p>
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a class="link" href={l.href} target="_blank" rel="noopener">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div>
+      <p class="mono label muted">{dict.footer.questionsTitle}</p>
+      <a class="link" href="mailto:julien@dacunha.ovh">julien@dacunha.ovh</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--hairline);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .grid {
+    display: grid;
+    gap: 2rem;
+    font-size: 0.9375rem;
+  }
+
+  @media (min-width: 720px) {
+    .grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+
+  .brand {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .tld {
+    color: var(--glacial);
+  }
+
+  .small {
+    font-size: 0.8125rem;
+  }
+
+  .heart {
+    color: var(--glacial);
+  }
+
+  .label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.4rem;
+  }
+</style>

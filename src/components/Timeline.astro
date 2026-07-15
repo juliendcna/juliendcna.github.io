@@ -1,0 +1,105 @@
+---
+import type { TimelineItem } from '../i18n';
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="timeline">
+  {
+    items.map((item) => (
+      <li class="entry" data-reveal>
+        <p class="dates mono">{item.dates}</p>
+        <div class="body">
+          <h3 class="title">{item.title}</h3>
+          <p class="org mono">
+            {item.orgUrl ? (
+              <a class="link" href={item.orgUrl} target="_blank" rel="noopener">
+                {item.org}
+              </a>
+            ) : (
+              item.org
+            )}
+          </p>
+          {item.points && (
+            <ul class="points">
+              {item.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .entry {
+    display: grid;
+    gap: 0.4rem 2.5rem;
+    padding-block: 2rem;
+    padding-inline: 0.75rem;
+    border-top: 1px solid var(--hairline);
+    transition: background 250ms ease;
+  }
+
+  .entry:hover {
+    background: var(--glacial-wash);
+  }
+
+  .entry:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  @media (min-width: 720px) {
+    .entry {
+      grid-template-columns: 14rem minmax(0, 1fr);
+    }
+  }
+
+  .dates {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding-top: 0.55rem;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  .org {
+    font-size: 0.8125rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .points {
+    color: var(--dim);
+    font-size: 0.9375rem;
+    display: grid;
+    gap: 0.3rem;
+    max-width: 56ch;
+  }
+
+  .points li {
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--glacial);
+  }
+</style>

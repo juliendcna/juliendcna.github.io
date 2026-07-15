@@ -1,0 +1,27 @@
+---
+/**
+ * Renders a monochrome brand glyph from src/assets/logos/ (Simple Icons SVGs
+ * with their brand fill stripped) so it inherits the surrounding text color.
+ */
+interface Props {
+  slug: string;
+  size?: number;
+}
+
+const { slug, size = 16 } = Astro.props;
+
+const logos = import.meta.glob<{ default: astroHTML.JSX.Element }>('../assets/logos/*.svg', {
+  eager: true,
+});
+
+const Logo = logos[`../assets/logos/${slug}.svg`]?.default;
+---
+
+{Logo && <Logo width={size} height={size} fill="currentColor" aria-hidden="true" class="tech-icon" />}
+
+<style is:global>
+  .tech-icon {
+    flex: none;
+    display: block;
+  }
+</style>

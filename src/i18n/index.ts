@@ -92,8 +92,6 @@ export interface Dictionary {
   };
   footer: {
     linksTitle: string;
-    labLink: string;
-    docsLink: string;
     statusLink: string;
     questionsTitle: string;
     madeWith: string;

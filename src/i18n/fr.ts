@@ -176,8 +176,6 @@ const fr: Dictionary = {
   },
   footer: {
     linksTitle: 'Liens',
-    labLink: 'LAB — GoneIX',
-    docsLink: 'Docs — GoneIX',
     statusLink: 'Status — GoneIX',
     questionsTitle: 'Des questions ?',
     madeWith: 'Made with',

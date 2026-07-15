@@ -9,11 +9,7 @@ const { lang } = Astro.props;
 const dict = t(lang);
 const year = new Date().getFullYear();
 
-const links = [
-  { label: dict.footer.labLink, href: 'https://goneix.net' },
-  { label: dict.footer.docsLink, href: 'https://doc.goneix.net' },
-  { label: dict.footer.statusLink, href: 'https://status.dacunha.ovh/' },
-];
+const links = [{ label: dict.footer.statusLink, href: 'https://status.dacunha.ovh/' }];
 ---
 
 <footer class="footer">

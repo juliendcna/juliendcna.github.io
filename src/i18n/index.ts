@@ -21,9 +21,15 @@ export interface Certification {
   note?: string;
 }
 
+export interface SkillItem {
+  label: string;
+  /** Simple Icons slug matching a file in src/assets/logos/ */
+  icon?: string;
+}
+
 export interface SkillGroup {
   name: string;
-  items: string[];
+  items: SkillItem[];
 }
 
 export interface Dictionary {

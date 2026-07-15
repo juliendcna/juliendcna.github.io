@@ -1,4 +1,5 @@
 ---
+import TechIcon from './TechIcon.astro';
 import { t, type Locale } from '../i18n';
 
 interface Props {
@@ -19,14 +20,18 @@ const disciplines = [groups[0], groups[1], groups[groups.length - 1]]
   .join(' / ');
 
 const stack = [
-  'Kubernetes',
-  'Terraform',
-  'Google Cloud',
-  'Ansible',
-  'Cisco',
-  'pfSense',
-  'VMware',
-  'Linux',
+  { label: 'Kubernetes', icon: 'kubernetes' },
+  { label: 'Terraform', icon: 'terraform' },
+  { label: 'Google Cloud', icon: 'googlecloud' },
+  { label: 'Ansible', icon: 'ansible' },
+  { label: 'Prometheus', icon: 'prometheus' },
+  { label: 'Grafana', icon: 'grafana' },
+  { label: 'Istio', icon: 'istio' },
+  { label: 'NGINX', icon: 'nginx' },
+  { label: 'Cisco', icon: 'cisco' },
+  { label: 'pfSense', icon: 'pfsense' },
+  { label: 'VMware', icon: 'vmware' },
+  { label: 'Linux', icon: 'linux' },
 ];
 const marquee = [...stack, ...stack];
 ---
@@ -53,7 +58,15 @@ const marquee = [...stack, ...stack];
   </div>
   <div class="marquee mono" aria-hidden="true">
     <div class="track">
-      {marquee.map((item) => <span>{item}<i>·</i></span>)}
+      {
+        marquee.map((item) => (
+          <span>
+            <TechIcon slug={item.icon} size={15} />
+            {item.label}
+            <i>·</i>
+          </span>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -193,6 +206,7 @@ const marquee = [...stack, ...stack];
   .track span {
     display: inline-flex;
     align-items: center;
+    gap: 0.7rem;
   }
 
   .track i {

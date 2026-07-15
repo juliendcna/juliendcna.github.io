@@ -152,25 +152,42 @@ const en: Dictionary = {
     groups: [
       {
         name: 'Cloud & platform',
-        items: ['Google Cloud Platform', 'Kubernetes', 'Terraform', 'Ansible', 'CI/CD pipelines'],
+        items: [
+          { label: 'Google Cloud Platform', icon: 'googlecloud' },
+          { label: 'Kubernetes', icon: 'kubernetes' },
+          { label: 'Terraform', icon: 'terraform' },
+          { label: 'Ansible', icon: 'ansible' },
+          { label: 'CI/CD pipelines' },
+        ],
       },
       {
         name: 'Network',
-        items: ['Cisco CLI', 'Mikrotik CLI', 'pfSense', 'VOIP platforms'],
+        items: [
+          { label: 'Cisco CLI', icon: 'cisco' },
+          { label: 'Mikrotik CLI', icon: 'mikrotik' },
+          { label: 'pfSense', icon: 'pfsense' },
+          { label: 'VOIP platforms' },
+        ],
       },
       {
         name: 'API gateways & service mesh',
-        items: ['Kong', 'Istio', 'Traefik', 'NGINX'],
+        items: [
+          { label: 'Kong', icon: 'kong' },
+          { label: 'Istio', icon: 'istio' },
+          { label: 'Traefik', icon: 'traefikproxy' },
+          { label: 'NGINX', icon: 'nginx' },
+        ],
       },
       {
         name: 'Systems & observability',
         items: [
-          'Linux administration',
-          'Windows administration',
-          'VMware ESXi & vCenter',
-          'Prometheus & Grafana',
-          'OpenTelemetry',
-          'Centreon monitoring',
+          { label: 'Linux administration', icon: 'linux' },
+          { label: 'Windows administration' },
+          { label: 'VMware ESXi & vCenter', icon: 'vmware' },
+          { label: 'Prometheus', icon: 'prometheus' },
+          { label: 'Grafana', icon: 'grafana' },
+          { label: 'OpenTelemetry', icon: 'opentelemetry' },
+          { label: 'Centreon monitoring' },
         ],
       },
     ],

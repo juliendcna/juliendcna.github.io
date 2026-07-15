@@ -152,25 +152,42 @@ const fr: Dictionary = {
     groups: [
       {
         name: 'Cloud & plateforme',
-        items: ['Google Cloud Platform', 'Kubernetes', 'Terraform', 'Ansible', 'Pipelines CI/CD'],
+        items: [
+          { label: 'Google Cloud Platform', icon: 'googlecloud' },
+          { label: 'Kubernetes', icon: 'kubernetes' },
+          { label: 'Terraform', icon: 'terraform' },
+          { label: 'Ansible', icon: 'ansible' },
+          { label: 'Pipelines CI/CD' },
+        ],
       },
       {
         name: 'Réseau',
-        items: ['Cisco CLI', 'Mikrotik CLI', 'pfSense', 'Plateformes VOIP'],
+        items: [
+          { label: 'Cisco CLI', icon: 'cisco' },
+          { label: 'Mikrotik CLI', icon: 'mikrotik' },
+          { label: 'pfSense', icon: 'pfsense' },
+          { label: 'Plateformes VOIP' },
+        ],
       },
       {
         name: 'Passerelles API & service mesh',
-        items: ['Kong', 'Istio', 'Traefik', 'NGINX'],
+        items: [
+          { label: 'Kong', icon: 'kong' },
+          { label: 'Istio', icon: 'istio' },
+          { label: 'Traefik', icon: 'traefikproxy' },
+          { label: 'NGINX', icon: 'nginx' },
+        ],
       },
       {
         name: 'Systèmes & observabilité',
         items: [
-          'Administration Linux',
-          'Administration Windows',
-          'VMware ESXi & vCenter',
-          'Prometheus & Grafana',
-          'OpenTelemetry',
-          'Monitoring Centreon',
+          { label: 'Administration Linux', icon: 'linux' },
+          { label: 'Administration Windows' },
+          { label: 'VMware ESXi & vCenter', icon: 'vmware' },
+          { label: 'Prometheus', icon: 'prometheus' },
+          { label: 'Grafana', icon: 'grafana' },
+          { label: 'OpenTelemetry', icon: 'opentelemetry' },
+          { label: 'Monitoring Centreon' },
         ],
       },
     ],

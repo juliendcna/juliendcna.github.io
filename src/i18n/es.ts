@@ -203,9 +203,6 @@ const es: Dictionary = {
     linkedinLabel: 'LinkedIn',
   },
   footer: {
-    linksTitle: 'Enlaces',
-    statusLink: 'Status — GoneIX',
-    questionsTitle: '¿Preguntas?',
     madeWith: 'Hecho con',
   },
   a11y: {

@@ -97,9 +97,6 @@ export interface Dictionary {
     linkedinLabel: string;
   };
   footer: {
-    linksTitle: string;
-    statusLink: string;
-    questionsTitle: string;
     madeWith: string;
   };
   a11y: {

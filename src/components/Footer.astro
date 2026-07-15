@@ -1,4 +1,5 @@
 ---
+import TechIcon from './TechIcon.astro';
 import { t, type Locale } from '../i18n';
 
 interface Props {
@@ -8,34 +9,18 @@ interface Props {
 const { lang } = Astro.props;
 const dict = t(lang);
 const year = new Date().getFullYear();
-
-const links = [{ label: dict.footer.statusLink, href: 'https://status.dacunha.ovh/' }];
 ---
 
 <footer class="footer">
-  <div class="wrap grid">
-    <div>
-      <p class="mono brand">dacunha<span class="tld">.ovh</span></p>
-      <p class="muted small">© {year} Julien Da Cunha — {dict.footer.madeWith} <span class="heart" aria-hidden="true">♥</span></p>
-    </div>
-    <nav aria-label={dict.footer.linksTitle}>
-      <p class="mono label muted">{dict.footer.linksTitle}</p>
-      <ul>
-        {
-          links.map((l) => (
-            <li>
-              <a class="link" href={l.href} target="_blank" rel="noopener">
-                {l.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-    <div>
-      <p class="mono label muted">{dict.footer.questionsTitle}</p>
-      <a class="link" href="mailto:julien@dacunha.ovh">julien@dacunha.ovh</a>
-    </div>
+  <div class="wrap inner">
+    <p class="mono brand">dacunha<span class="tld">.ovh</span></p>
+    <p class="muted small">© {year} Julien Da Cunha</p>
+    <p class="muted small made">
+      {dict.footer.madeWith} <span class="heart" aria-hidden="true">♥</span> &amp;
+      <a class="astro" href="https://astro.build" target="_blank" rel="noopener">
+        <TechIcon slug="astro" size={14} /> Astro
+      </a>
+    </p>
   </div>
 </footer>
 
@@ -45,21 +30,17 @@ const links = [{ label: dict.footer.statusLink, href: 'https://status.dacunha.ov
     padding-block: clamp(2.5rem, 5vw, 4rem);
   }
 
-  .grid {
-    display: grid;
-    gap: 2rem;
-    font-size: 0.9375rem;
-  }
-
-  @media (min-width: 720px) {
-    .grid {
-      grid-template-columns: 2fr 1fr 1fr;
-    }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
   }
 
   .brand {
     font-weight: 500;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
   }
 
   .tld {
@@ -74,15 +55,23 @@ const links = [{ label: dict.footer.statusLink, href: 'https://status.dacunha.ov
     color: var(--glacial);
   }
 
-  .label {
-    font-size: 0.6875rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
+  .made {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  ul {
-    display: grid;
-    gap: 0.4rem;
+  .astro {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--bone);
+    border-bottom: 1px solid transparent;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .astro:hover {
+    color: var(--glacial);
+    border-bottom-color: var(--glacial);
   }
 </style>

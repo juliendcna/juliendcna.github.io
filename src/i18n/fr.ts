@@ -203,10 +203,7 @@ const fr: Dictionary = {
     linkedinLabel: 'LinkedIn',
   },
   footer: {
-    linksTitle: 'Liens',
-    statusLink: 'Status — GoneIX',
-    questionsTitle: 'Des questions ?',
-    madeWith: 'Made with',
+    madeWith: 'Fait avec',
   },
   a11y: {
     skipToContent: 'Aller au contenu',

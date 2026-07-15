@@ -1,0 +1,115 @@
+---
+import { t, pathForLocale, locales, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+
+const anchors = [
+  { href: '#about', label: dict.nav.about },
+  { href: '#experience', label: dict.nav.experience },
+  { href: '#education', label: dict.nav.education },
+  { href: '#skills', label: dict.nav.skills },
+  { href: '#contact', label: dict.nav.contact },
+];
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand mono" href={pathForLocale(lang)}>dacunha<span class="tld">.ovh</span></a>
+    <nav class="anchors" aria-label="Sections">
+      {anchors.map((a) => <a href={a.href}>{a.label}</a>)}
+    </nav>
+    <nav class="langs mono" aria-label={dict.a11y.languageMenu}>
+      {
+        locales.map((l) => (
+          <a href={pathForLocale(l)} class:list={[{ current: l === lang }]} aria-current={l === lang ? 'page' : undefined} lang={l}>
+            {l.toUpperCase()}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 3.75rem;
+  }
+
+  .brand {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .tld {
+    color: var(--accent);
+  }
+
+  .anchors {
+    display: none;
+    gap: 1.75rem;
+    margin-inline: auto;
+  }
+
+  .anchors a {
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    transition: color 140ms ease;
+  }
+
+  .anchors a:hover {
+    color: var(--ink);
+  }
+
+  .langs {
+    display: flex;
+    gap: 0.9rem;
+    margin-left: auto;
+    font-size: 0.8125rem;
+  }
+
+  .langs a {
+    color: var(--ink-soft);
+    padding-block: 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: color 140ms ease;
+  }
+
+  .langs a:hover {
+    color: var(--ink);
+  }
+
+  .langs a.current {
+    color: var(--accent);
+    font-weight: 500;
+    border-bottom-color: var(--accent);
+  }
+
+  @media (min-width: 880px) {
+    .anchors {
+      display: flex;
+    }
+
+    .langs {
+      margin-left: 0;
+    }
+  }
+</style>

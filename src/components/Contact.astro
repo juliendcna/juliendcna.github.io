@@ -1,0 +1,70 @@
+---
+import SectionShell from './SectionShell.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+
+const channels = [
+  {
+    label: dict.contact.locationLabel,
+    value: 'Geneva, Switzerland',
+    href: 'https://www.google.com/maps/search/Geneva',
+  },
+  { label: dict.contact.emailLabel, value: 'julien@dacunha.ovh', href: 'mailto:julien@dacunha.ovh' },
+  { label: dict.contact.githubLabel, value: 'github.com/juliendcna', href: 'https://github.com/juliendcna' },
+  {
+    label: dict.contact.linkedinLabel,
+    value: 'Julien Da Cunha',
+    href: 'https://www.linkedin.com/in/julien-da-cunha',
+  },
+];
+---
+
+<SectionShell id="contact" keyLabel={dict.contact.key} heading={dict.contact.heading}>
+  <p class="pitch" data-reveal>{dict.contact.body}</p>
+  <p data-reveal><a class="btn btn--solid" href="mailto:julien@dacunha.ovh">{dict.contact.button}</a></p>
+  <ul class="channels">
+    {
+      channels.map((c) => (
+        <li data-reveal>
+          <p class="label mono muted">{c.label}</p>
+          <a class="link" href={c.href} target={c.href.startsWith('mailto:') ? undefined : '_blank'} rel="noopener">
+            {c.value}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</SectionShell>
+
+<style>
+  .pitch {
+    font-size: 1.1875rem;
+    max-width: 34em;
+    margin-bottom: 1.75rem;
+  }
+
+  .channels {
+    display: grid;
+    gap: 1.5rem 2rem;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 720px) {
+    .channels {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+</style>

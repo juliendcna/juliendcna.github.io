@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import SectionShell from './SectionShell.astro';
+import portrait from '../assets/portrait.jpg';
+import { t, currentAge, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+const age = currentAge();
+
+const facts = [
+  { label: dict.about.factName, value: 'Julien Da Cunha' },
+  { label: dict.about.factAge, value: `${age} ${dict.about.factAgeUnit}` },
+  { label: dict.about.factLocation, value: 'Geneva, Switzerland' },
+  { label: dict.about.factEmail, value: 'julien@dacunha.ovh', href: 'mailto:julien@dacunha.ovh' },
+];
+---
+
+<SectionShell id="about" keyLabel={dict.about.key} heading={dict.about.heading}>
+  <div class="cols">
+    <figure class="portrait" data-reveal>
+      <Image src={portrait} alt="Julien Da Cunha" width={720} densities={[1, 2]} loading="lazy" />
+    </figure>
+    <div class="text" data-reveal>
+      <p class="body">{dict.about.body}</p>
+      <dl class="facts mono">
+        {
+          facts.map((f) => (
+            <div class="fact">
+              <dt>{f.label}</dt>
+              <dd>{f.href ? <a class="link" href={f.href}>{f.value}</a> : f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="uptime">
+        <span class="value mono">100<sup>%</sup></span>
+        <a class="link" href="https://status.goneix.net" target="_blank" rel="noopener">{dict.about.uptimeLabel}</a>
+      </p>
+      <p class="cv mono muted">// {dict.about.cvNote}</p>
+    </div>
+  </div>
+</SectionShell>
+
+<style>
+  .cols {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  @media (min-width: 780px) {
+    .cols {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+
+  .portrait {
+    position: relative;
+    border: 1px solid var(--rule);
+    background: var(--card);
+    padding: 0.75rem;
+  }
+
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0.75rem;
+    pointer-events: none;
+    border: 1px solid var(--rule-faint);
+  }
+
+  .portrait :global(img) {
+    width: 100%;
+    height: auto;
+    filter: saturate(0.92);
+  }
+
+  .body {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    max-width: 34em;
+    margin-bottom: 2rem;
+  }
+
+  .facts {
+    font-size: 0.9375rem;
+    border-top: 1px solid var(--rule);
+    margin-bottom: 2.25rem;
+  }
+
+  .fact {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1rem;
+    padding-block: 0.7rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .fact dt {
+    color: var(--ink-soft);
+  }
+
+  .fact dt::after {
+    content: ':';
+  }
+
+  .uptime {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .uptime .value {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .uptime sup {
+    font-size: 1rem;
+  }
+
+  .cv {
+    font-size: 0.8125rem;
+  }
+</style>

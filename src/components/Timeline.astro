@@ -1,0 +1,100 @@
+---
+import type { TimelineItem } from '../i18n';
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="timeline">
+  {
+    items.map((item) => (
+      <li class="entry" data-reveal>
+        <p class="dates mono">{item.dates}</p>
+        <div class="body">
+          <h3 class="title">{item.title}</h3>
+          <p class="org mono">
+            {item.orgUrl ? (
+              <a class="link" href={item.orgUrl} target="_blank" rel="noopener">
+                {item.org}
+              </a>
+            ) : (
+              item.org
+            )}
+          </p>
+          {item.points && (
+            <ul class="points">
+              {item.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    display: grid;
+    gap: 0;
+  }
+
+  .entry {
+    display: grid;
+    gap: 0.35rem 2rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .entry:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (min-width: 720px) {
+    .entry {
+      grid-template-columns: 13rem minmax(0, 1fr);
+    }
+  }
+
+  .dates {
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    padding-top: 0.3rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+    font-weight: 650;
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+  }
+
+  .org {
+    font-size: 0.8125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .points {
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .points li {
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import SectionShell from './SectionShell.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const dict = t(lang);
+---
+
+<SectionShell id="certifications" keyLabel={dict.certifications.key} heading={dict.certifications.heading}>
+  <ul class="certs">
+    {
+      dict.certifications.items.map((cert) => (
+        <li class="cert" data-reveal>
+          <p class="year mono">{cert.year}</p>
+          <div>
+            <h3 class="title">{cert.title}</h3>
+            <p class="org mono muted">{cert.org}</p>
+            {cert.note && <p class="note muted">{cert.note}</p>}
+          </div>
+          {cert.url && (
+            <a class="view mono link" href={cert.url} target="_blank" rel="noopener">
+              {dict.certifications.view} ↗
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</SectionShell>
+
+<style>
+  .cert {
+    display: grid;
+    gap: 0.4rem 2rem;
+    padding-block: 1.4rem;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .cert:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (min-width: 720px) {
+    .cert {
+      grid-template-columns: 13rem minmax(0, 1fr) auto;
+    }
+  }
+
+  .year {
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .title {
+    font-size: 1.0625rem;
+    font-weight: 650;
+    line-height: 1.4;
+  }
+
+  .org {
+    font-size: 0.8125rem;
+  }
+
+  .note {
+    font-size: 0.9375rem;
+    margin-top: 0.25rem;
+  }
+
+  .view {
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+</style>

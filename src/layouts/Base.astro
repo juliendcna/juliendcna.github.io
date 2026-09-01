@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import monoLatin400 from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2?url';
+import monoLatin500 from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { t, pathForLocale, locales, type Locale } from '../i18n';
@@ -50,6 +52,8 @@ const ogLocales: Record<Locale, string> = { en: 'en_GB', fr: 'fr_FR', es: 'es_ES
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical.href} />
     <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="preload" href={monoLatin400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={monoLatin500} as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0d10" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f1ec" />
     <link rel="sitemap" href="/sitemap-index.xml" />

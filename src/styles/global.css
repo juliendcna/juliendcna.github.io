@@ -192,7 +192,11 @@ ol {
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn--solid {
@@ -252,7 +256,30 @@ ol {
   [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
+
+  /* stagger sibling cards / list rows as they reveal together */
+  [data-reveal]:nth-child(2) {
+    --reveal-delay: 90ms;
+  }
+
+  [data-reveal]:nth-child(3) {
+    --reveal-delay: 180ms;
+  }
+
+  [data-reveal]:nth-child(4) {
+    --reveal-delay: 270ms;
+  }
+
+  [data-reveal]:nth-child(5) {
+    --reveal-delay: 360ms;
+  }
+
+  [data-reveal]:nth-child(n + 6) {
+    --reveal-delay: 450ms;
   }
 
   [data-reveal].in {

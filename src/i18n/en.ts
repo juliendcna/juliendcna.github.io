@@ -10,7 +10,7 @@ const en: Dictionary = {
     about: 'About',
     experience: 'Experience',
     education: 'Education',
-    skills: 'Skills',
+    skills: 'Stack',
     contact: 'Contact',
   },
   hero: {
@@ -148,16 +148,19 @@ const en: Dictionary = {
   },
   skills: {
     key: 'skills',
-    heading: 'Skills',
+    heading: 'Stack',
     groups: [
       {
         name: 'Cloud & platform',
         items: [
           { label: 'Google Cloud Platform', icon: 'googlecloud' },
+          { label: 'AWS', icon: 'aws' },
+          { label: 'Azure', icon: 'azure' },
           { label: 'Kubernetes', icon: 'kubernetes' },
+          { label: 'Docker', icon: 'docker' },
           { label: 'Terraform', icon: 'terraform' },
           { label: 'Ansible', icon: 'ansible' },
-          { label: 'CI/CD pipelines', icon: 'githubactions' },
+          { label: 'Consul', icon: 'consul' },
         ],
       },
       {
@@ -166,16 +169,42 @@ const en: Dictionary = {
           { label: 'Cisco CLI', icon: 'cisco' },
           { label: 'Mikrotik CLI', icon: 'mikrotik' },
           { label: 'pfSense', icon: 'pfsense' },
+          { label: 'Fortinet', icon: 'fortinet' },
           { label: 'VOIP platforms', icon: 'asterisk' },
         ],
       },
       {
-        name: 'API gateways & service mesh',
+        name: 'CI/CD & automation',
+        items: [
+          { label: 'GitHub Actions', icon: 'githubactions' },
+          { label: 'GitLab CI', icon: 'gitlab' },
+          { label: 'ArgoCD', icon: 'argo' },
+          { label: 'Renovate', icon: 'renovate' },
+        ],
+      },
+      {
+        name: 'API gateways & web servers',
         items: [
           { label: 'Kong', icon: 'kong' },
           { label: 'Istio', icon: 'istio' },
           { label: 'Traefik', icon: 'traefikproxy' },
           { label: 'NGINX', icon: 'nginx' },
+          { label: 'Apache', icon: 'apache' },
+          { label: 'Tomcat', icon: 'apachetomcat' },
+        ],
+      },
+      {
+        name: 'Data & messaging',
+        items: [
+          { label: 'PostgreSQL', icon: 'postgresql' },
+          { label: 'MariaDB Galera', icon: 'mariadb' },
+          { label: 'MongoDB Atlas', icon: 'mongodb' },
+          { label: 'InfluxDB', icon: 'influxdb' },
+          { label: 'Elasticsearch', icon: 'elasticsearch' },
+          { label: 'Kafka', icon: 'apachekafka' },
+          { label: 'Google Pub/Sub', icon: 'googlepubsub' },
+          { label: 'RabbitMQ', icon: 'rabbitmq' },
+          { label: 'MQTT', icon: 'mqtt' },
         ],
       },
       {
@@ -184,6 +213,8 @@ const en: Dictionary = {
           { label: 'Linux administration', icon: 'linux' },
           { label: 'Windows administration', icon: 'windows' },
           { label: 'VMware ESXi & vCenter', icon: 'vmware' },
+          { label: 'Python', icon: 'python' },
+          { label: 'Bash', icon: 'gnubash' },
           { label: 'Prometheus', icon: 'prometheus' },
           { label: 'Grafana', icon: 'grafana' },
           { label: 'OpenTelemetry', icon: 'opentelemetry' },

@@ -25,7 +25,7 @@ const en: Dictionary = {
   about: {
     key: 'about',
     heading: 'About me',
-    body: 'Network and cloud engineer with a deep interest in infrastructure, virtualization, and the systems that keep the internet running.',
+    body: 'Cloud engineer with a deep interest in IT infrastructure and the systems that keep the internet running.',
     factName: 'Name',
     factAge: 'Age',
     factAgeUnit: 'years',

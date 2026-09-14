@@ -48,11 +48,13 @@ const dict = t(lang);
     background: var(--night-raised);
     border-radius: 2px;
     padding: 1.75rem;
-    transition: border-color 250ms ease;
+    transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
   }
 
   .group:hover {
     border-color: color-mix(in srgb, var(--glacial) 40%, transparent);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px -18px color-mix(in srgb, var(--glacial) 35%, transparent);
   }
 
   .group-name {
@@ -72,6 +74,13 @@ const dict = t(lang);
     color: var(--bone);
     padding-block: 0.65rem;
     border-top: 1px solid var(--hairline-faint);
+    transition: transform 250ms ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .group li:hover {
+      transform: translateX(6px);
+    }
   }
 
   .icon-slot {

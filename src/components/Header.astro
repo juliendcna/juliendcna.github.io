@@ -1,4 +1,5 @@
 ---
+import TechIcon from './TechIcon.astro';
 import { t, pathForLocale, locales, type Locale } from '../i18n';
 
 interface Props {
@@ -19,7 +20,9 @@ const anchors = [
 
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand mono" href={pathForLocale(lang)}>dacunha<span class="tld">.ovh</span></a>
+    <a class="brand" href={pathForLocale(lang)} aria-label="Julien Da Cunha — home">
+      <TechIcon slug="jdc" size={30} />
+    </a>
     <nav class="anchors" aria-label="Sections">
       {anchors.map((a) => <a href={a.href}>{a.label}</a>)}
     </nav>
@@ -54,13 +57,10 @@ const anchors = [
   }
 
   .brand {
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-
-  .tld {
-    color: var(--glacial);
+    display: inline-flex;
+    align-items: center;
+    /* white on the dark theme, near-black on the light theme */
+    color: var(--bone);
   }
 
   .anchors {

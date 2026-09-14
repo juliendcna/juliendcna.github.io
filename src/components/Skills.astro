@@ -11,7 +11,7 @@ const { lang } = Astro.props;
 const dict = t(lang);
 ---
 
-<SectionShell id="skills" keyLabel={dict.skills.key} heading={dict.skills.heading}>
+<SectionShell id="skills" heading={dict.skills.heading}>
   <div class="groups">
     {
       dict.skills.groups.map((group) => (

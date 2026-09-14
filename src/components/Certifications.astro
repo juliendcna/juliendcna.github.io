@@ -10,7 +10,7 @@ const { lang } = Astro.props;
 const dict = t(lang);
 ---
 
-<SectionShell id="certifications" keyLabel={dict.certifications.key} heading={dict.certifications.heading}>
+<SectionShell id="certifications" heading={dict.certifications.heading}>
   <ul class="certs">
     {
       dict.certifications.items.map((cert) => (

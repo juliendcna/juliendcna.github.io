@@ -1,16 +1,14 @@
 ---
 interface Props {
   id: string;
-  keyLabel: string;
   heading: string;
 }
 
-const { id, keyLabel, heading } = Astro.props;
+const { id, heading } = Astro.props;
 ---
 
 <section class="section" id={id}>
   <div class="wrap">
-    <p class="eyebrow">{keyLabel}</p>
     <h2 class="heading" data-reveal>{heading}</h2>
     <slot />
   </div>

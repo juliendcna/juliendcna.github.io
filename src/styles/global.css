@@ -147,10 +147,6 @@ ol {
   margin-bottom: clamp(1.75rem, 4vw, 3rem);
 }
 
-.eyebrow .tick {
-  color: var(--glacial);
-}
-
 .heading {
   font-family: var(--font-display);
   font-weight: 700;

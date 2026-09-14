@@ -10,7 +10,7 @@ const es: Dictionary = {
     about: 'Sobre mí',
     experience: 'Experiencia',
     education: 'Formación',
-    skills: 'Habilidades',
+    skills: 'Competencias',
     contact: 'Contacto',
   },
   hero: {
@@ -148,7 +148,7 @@ const es: Dictionary = {
   },
   skills: {
     key: 'habilidades',
-    heading: 'Habilidades',
+    heading: 'Competencias',
     groups: [
       {
         name: 'Cloud y plataforma',

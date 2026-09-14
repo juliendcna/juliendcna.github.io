@@ -10,7 +10,7 @@ const fr: Dictionary = {
     about: 'À propos',
     experience: 'Expérience',
     education: 'Formation',
-    skills: 'Compétences',
+    skills: 'Stack',
     contact: 'Contact',
   },
   hero: {
@@ -148,16 +148,19 @@ const fr: Dictionary = {
   },
   skills: {
     key: 'competences',
-    heading: 'Compétences',
+    heading: 'Stack',
     groups: [
       {
         name: 'Cloud & plateforme',
         items: [
           { label: 'Google Cloud Platform', icon: 'googlecloud' },
+          { label: 'AWS', icon: 'aws' },
+          { label: 'Azure', icon: 'azure' },
           { label: 'Kubernetes', icon: 'kubernetes' },
+          { label: 'Docker', icon: 'docker' },
           { label: 'Terraform', icon: 'terraform' },
           { label: 'Ansible', icon: 'ansible' },
-          { label: 'Pipelines CI/CD', icon: 'githubactions' },
+          { label: 'Consul', icon: 'consul' },
         ],
       },
       {
@@ -166,16 +169,42 @@ const fr: Dictionary = {
           { label: 'Cisco CLI', icon: 'cisco' },
           { label: 'Mikrotik CLI', icon: 'mikrotik' },
           { label: 'pfSense', icon: 'pfsense' },
+          { label: 'Fortinet', icon: 'fortinet' },
           { label: 'Plateformes VOIP', icon: 'asterisk' },
         ],
       },
       {
-        name: 'Passerelles API & service mesh',
+        name: 'CI/CD & automatisation',
+        items: [
+          { label: 'GitHub Actions', icon: 'githubactions' },
+          { label: 'GitLab CI', icon: 'gitlab' },
+          { label: 'ArgoCD', icon: 'argo' },
+          { label: 'Renovate', icon: 'renovate' },
+        ],
+      },
+      {
+        name: 'Passerelles API & serveurs web',
         items: [
           { label: 'Kong', icon: 'kong' },
           { label: 'Istio', icon: 'istio' },
           { label: 'Traefik', icon: 'traefikproxy' },
           { label: 'NGINX', icon: 'nginx' },
+          { label: 'Apache', icon: 'apache' },
+          { label: 'Tomcat', icon: 'apachetomcat' },
+        ],
+      },
+      {
+        name: 'Données & messagerie',
+        items: [
+          { label: 'PostgreSQL', icon: 'postgresql' },
+          { label: 'MariaDB Galera', icon: 'mariadb' },
+          { label: 'MongoDB Atlas', icon: 'mongodb' },
+          { label: 'InfluxDB', icon: 'influxdb' },
+          { label: 'Elasticsearch', icon: 'elasticsearch' },
+          { label: 'Kafka', icon: 'apachekafka' },
+          { label: 'Google Pub/Sub', icon: 'googlepubsub' },
+          { label: 'RabbitMQ', icon: 'rabbitmq' },
+          { label: 'MQTT', icon: 'mqtt' },
         ],
       },
       {
@@ -184,6 +213,8 @@ const fr: Dictionary = {
           { label: 'Administration Linux', icon: 'linux' },
           { label: 'Administration Windows', icon: 'windows' },
           { label: 'VMware ESXi & vCenter', icon: 'vmware' },
+          { label: 'Python', icon: 'python' },
+          { label: 'Bash', icon: 'gnubash' },
           { label: 'Prometheus', icon: 'prometheus' },
           { label: 'Grafana', icon: 'grafana' },
           { label: 'OpenTelemetry', icon: 'opentelemetry' },

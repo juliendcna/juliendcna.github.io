@@ -134,11 +134,10 @@ ol {
   padding-block: clamp(4.5rem, 10vw, 8.5rem);
 }
 
-/* mono eyebrow with trailing rule */
+/* mono eyebrow */
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 400;
@@ -146,13 +145,6 @@ ol {
   text-transform: uppercase;
   color: var(--dim);
   margin-bottom: clamp(1.75rem, 4vw, 3rem);
-}
-
-.eyebrow::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--hairline);
 }
 
 .eyebrow .tick {

@@ -157,7 +157,7 @@ const en: Dictionary = {
           { label: 'Kubernetes', icon: 'kubernetes' },
           { label: 'Terraform', icon: 'terraform' },
           { label: 'Ansible', icon: 'ansible' },
-          { label: 'CI/CD pipelines' },
+          { label: 'CI/CD pipelines', icon: 'githubactions' },
         ],
       },
       {
@@ -166,7 +166,7 @@ const en: Dictionary = {
           { label: 'Cisco CLI', icon: 'cisco' },
           { label: 'Mikrotik CLI', icon: 'mikrotik' },
           { label: 'pfSense', icon: 'pfsense' },
-          { label: 'VOIP platforms' },
+          { label: 'VOIP platforms', icon: 'asterisk' },
         ],
       },
       {
@@ -182,12 +182,12 @@ const en: Dictionary = {
         name: 'Systems & observability',
         items: [
           { label: 'Linux administration', icon: 'linux' },
-          { label: 'Windows administration' },
+          { label: 'Windows administration', icon: 'windows' },
           { label: 'VMware ESXi & vCenter', icon: 'vmware' },
           { label: 'Prometheus', icon: 'prometheus' },
           { label: 'Grafana', icon: 'grafana' },
           { label: 'OpenTelemetry', icon: 'opentelemetry' },
-          { label: 'Centreon monitoring' },
+          { label: 'Centreon monitoring', icon: 'centreon' },
         ],
       },
     ],

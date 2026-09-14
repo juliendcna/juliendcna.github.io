@@ -10,7 +10,7 @@ const es: Dictionary = {
     about: 'Sobre mí',
     experience: 'Experiencia',
     education: 'Formación',
-    skills: 'Habilidades',
+    skills: 'Competencias',
     contact: 'Contacto',
   },
   hero: {
@@ -25,7 +25,7 @@ const es: Dictionary = {
   about: {
     key: 'sobre-mi',
     heading: 'Sobre mí',
-    body: 'Ingeniero de redes y cloud con un profundo interés por las infraestructuras, la virtualización y los sistemas que mantienen Internet en funcionamiento.',
+    body: 'Ingeniero Cloud con un profundo interés por las infraestructuras informáticas y los sistemas que mantienen Internet en funcionamiento.',
     factName: 'Nombre',
     factAge: 'Edad',
     factAgeUnit: 'años',
@@ -148,7 +148,7 @@ const es: Dictionary = {
   },
   skills: {
     key: 'habilidades',
-    heading: 'Habilidades',
+    heading: 'Competencias',
     groups: [
       {
         name: 'Cloud y plataforma',

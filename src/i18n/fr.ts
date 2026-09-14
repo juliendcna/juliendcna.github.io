@@ -25,7 +25,7 @@ const fr: Dictionary = {
   about: {
     key: 'a-propos',
     heading: 'À propos de moi',
-    body: "Ingénieur réseaux et cloud, passionné par les infrastructures, la virtualisation et les systèmes qui font tourner Internet.",
+    body: "Ingénieur Cloud, passionné par les infrastructures informatiques et les systèmes qui font tourner Internet.",
     factName: 'Nom',
     factAge: 'Âge',
     factAgeUnit: 'ans',

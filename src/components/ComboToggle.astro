@@ -1,0 +1,146 @@
+---
+import { combos } from '../lib/combos';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+
+const step = 360 / combos.length;
+const disc = `conic-gradient(${combos
+  .map((c, i) => `${c.accentDark} ${(i * step).toFixed(3)}deg ${((i + 1) * step).toFixed(3)}deg`)
+  .join(', ')})`;
+---
+
+<button
+  type="button"
+  class="combo-toggle"
+  aria-label={label}
+  title={label}
+  data-label={label}
+  data-combos={JSON.stringify(combos.map((c) => ({ id: c.id, name: c.name, d: c.groundDark, l: c.groundLight })))}
+>
+  <span class="disc" style={`background: ${disc}`} aria-hidden="true"></span>
+  <span class="core" aria-hidden="true"></span>
+  <span class="pointer" aria-hidden="true"></span>
+</button>
+
+<style>
+  .combo-toggle {
+    position: relative;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: transform 250ms ease;
+  }
+
+  .combo-toggle:hover {
+    transform: scale(1.12);
+  }
+
+  .combo-toggle:active {
+    transform: scale(0.94);
+  }
+
+  .disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transform: rotate(var(--spin, 0deg));
+    box-shadow: 0 0 0 1px var(--hairline);
+  }
+
+  .combo-toggle.ready .disc {
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* the center shows the live combo: ground ring around an accent dot */
+  .core {
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    background: var(--glacial);
+    box-shadow: 0 0 0 3px var(--night);
+  }
+
+  .pointer {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+    border-inline: 3px solid transparent;
+    border-top: 4px solid var(--bone);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .combo-toggle.ready .disc {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  interface ComboInfo {
+    id: string;
+    name: string;
+    d: string;
+    l: string;
+  }
+
+  const button = document.querySelector<HTMLButtonElement>('.combo-toggle');
+
+  if (button) {
+    const combos: ComboInfo[] = JSON.parse(button.dataset.combos ?? '[]');
+    const root = document.documentElement;
+    const step = 360 / combos.length;
+    const today = () => {
+      const now = new Date();
+      return Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 864e5);
+    };
+
+    let index = Math.max(
+      0,
+      combos.findIndex((c) => c.id === root.dataset.combo)
+    );
+    let spin = -(index + 0.5) * step;
+
+    const paint = () => {
+      const combo = combos[index]!;
+      button.style.setProperty('--spin', `${spin}deg`);
+      button.title = `${button.dataset.label} — ${combo.name}`;
+      document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+        meta.content = meta.media.includes('light') ? combo.l : combo.d;
+      });
+    };
+
+    paint();
+    requestAnimationFrame(() => button.classList.add('ready'));
+
+    let settle: number | undefined;
+
+    button.addEventListener('click', () => {
+      index = (index + 1) % combos.length;
+      spin -= step;
+
+      window.clearTimeout(settle);
+      root.classList.add('combo-shift');
+      root.dataset.combo = combos[index]!.id;
+      paint();
+      settle = window.setTimeout(() => root.classList.remove('combo-shift'), 750);
+
+      try {
+        localStorage.setItem('combo', JSON.stringify({ id: combos[index]!.id, day: today() }));
+      } catch {
+        /* storage unavailable: the choice just won't persist */
+      }
+    });
+  }
+</script>

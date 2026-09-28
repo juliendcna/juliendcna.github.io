@@ -1,5 +1,6 @@
 ---
 import TechIcon from './TechIcon.astro';
+import ComboToggle from './ComboToggle.astro';
 import { t, pathForLocale, locales, type Locale } from '../i18n';
 
 interface Props {
@@ -35,6 +36,7 @@ const anchors = [
         ))
       }
     </nav>
+    <ComboToggle label={dict.a11y.changePalette} />
   </div>
 </header>
 

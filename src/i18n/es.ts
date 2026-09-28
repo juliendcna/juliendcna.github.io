@@ -240,6 +240,7 @@ const es: Dictionary = {
     skipToContent: 'Saltar al contenido',
     languageMenu: 'Idioma',
     openMenu: 'Abrir el menú',
+    changePalette: 'Cambiar la paleta de colores',
   },
 };
 

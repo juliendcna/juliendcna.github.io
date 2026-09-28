@@ -12,22 +12,30 @@
   line-gap-override: 0%;
 }
 
+/* Every color derives from four combo inputs (--accent-d/-l, --ground-d/-l),
+   set per combo by html[data-combo] rules generated from src/lib/combos.ts.
+   These defaults are the fallback when JS is off. */
 :root {
+  --accent-d: #a5c8ff;
+  --accent-l: #3565c4;
+  --ground-d: #0b0d10;
+  --ground-l: #f2f1ec;
+
   color-scheme: dark;
 
-  --night: #0b0d10;
-  --night-raised: #12151a;
-  --bone: #eae8e0;
-  --dim: #8f959c;
-  --hairline: rgba(234, 232, 224, 0.12);
-  --hairline-faint: rgba(234, 232, 224, 0.06);
-  --glacial: #a5c8ff;
-  --glacial-wash: rgba(165, 200, 255, 0.07);
+  --glacial: var(--accent-d);
+  --night: var(--ground-d);
+  --night-raised: color-mix(in srgb, var(--ground-d) 91%, #ffffff);
+  --bone: color-mix(in srgb, #f4f2ec 92%, var(--accent-d));
+  --dim: color-mix(in srgb, var(--bone) 58%, var(--night));
+  --hairline: color-mix(in srgb, var(--bone) 12%, transparent);
+  --hairline-faint: color-mix(in srgb, var(--bone) 6%, transparent);
+  --glacial-wash: color-mix(in srgb, var(--glacial) 7%, transparent);
+  --glow-a: color-mix(in srgb, var(--glacial) 14%, transparent);
+  --glow-b: color-mix(in srgb, var(--glacial) 6%, transparent);
   --status: #4ade96;
   --status-wash: rgba(74, 222, 150, 0.1);
   --status-glow: rgba(74, 222, 150, 0.5);
-  --glow-a: rgba(165, 200, 255, 0.13);
-  --glow-b: rgba(165, 200, 255, 0.06);
   --grain-opacity: 0.5;
   --grain-filter: none;
 
@@ -43,21 +51,39 @@
   :root {
     color-scheme: light;
 
-    --night: #f2f1ec;
-    --night-raised: #ffffff;
-    --bone: #16181d;
-    --dim: #5d636b;
-    --hairline: rgba(22, 24, 29, 0.16);
-    --hairline-faint: rgba(22, 24, 29, 0.08);
-    --glacial: #3565c4;
-    --glacial-wash: rgba(53, 101, 196, 0.06);
+    --glacial: var(--accent-l);
+    --night: var(--ground-l);
+    --night-raised: color-mix(in srgb, var(--ground-l) 45%, #ffffff);
+    --bone: color-mix(in srgb, #14161b 90%, var(--accent-l));
+    --dim: color-mix(in srgb, var(--bone) 66%, var(--night));
+    --hairline: color-mix(in srgb, var(--bone) 16%, transparent);
+    --hairline-faint: color-mix(in srgb, var(--bone) 8%, transparent);
+    --glacial-wash: color-mix(in srgb, var(--glacial) 6%, transparent);
+    --glow-a: color-mix(in srgb, var(--glacial) 11%, transparent);
+    --glow-b: color-mix(in srgb, var(--glacial) 5%, transparent);
     --status: #0f8a55;
     --status-wash: rgba(15, 138, 85, 0.08);
     --status-glow: rgba(15, 138, 85, 0.35);
-    --glow-a: rgba(53, 101, 196, 0.1);
-    --glow-b: rgba(53, 101, 196, 0.05);
     --grain-opacity: 0.3;
     --grain-filter: invert(1);
+  }
+}
+
+/* cross-fade every color while a combo switch is in flight */
+@media (prefers-reduced-motion: no-preference) {
+  html.combo-shift,
+  html.combo-shift *,
+  html.combo-shift *::before,
+  html.combo-shift *::after {
+    transition:
+      background-color 700ms ease,
+      color 700ms ease,
+      border-color 700ms ease,
+      outline-color 700ms ease,
+      fill 700ms ease,
+      stroke 700ms ease,
+      box-shadow 700ms ease,
+      -webkit-text-stroke-color 700ms ease !important;
   }
 }
 

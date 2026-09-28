@@ -103,6 +103,7 @@ export interface Dictionary {
     skipToContent: string;
     languageMenu: string;
     openMenu: string;
+    changePalette: string;
   };
 }
 

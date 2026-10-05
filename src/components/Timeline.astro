@@ -51,6 +51,44 @@ const { items } = Astro.props;
     background: var(--glacial-wash);
   }
 
+  .entry {
+    position: relative;
+  }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    bottom: 0;
+    width: 2px;
+    background: var(--glacial);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 250ms);
+  }
+
+  .entry:global(.in)::before {
+    transform: scaleY(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .entry::before {
+      transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .dates {
+      transition: letter-spacing 500ms ease, color 300ms ease;
+    }
+
+    .entry:hover .dates {
+      letter-spacing: 0.16em;
+      color: var(--glacial);
+    }
+  }
+
   .entry:last-child {
     border-bottom: 1px solid var(--hairline);
   }

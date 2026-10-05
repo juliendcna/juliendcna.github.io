@@ -9,7 +9,7 @@ const { id, heading } = Astro.props;
 
 <section class="section" id={id}>
   <div class="wrap">
-    <h2 class="heading" data-reveal>{heading}</h2>
+    <h2 class="heading" data-reveal><span class="heading-text">{heading}</span></h2>
     <slot />
   </div>
 </section>

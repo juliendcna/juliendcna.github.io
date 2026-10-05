@@ -96,6 +96,9 @@ const ogLocales: Record<Locale, string> = { en: 'en_GB', fr: 'fr_FR', es: 'es_ES
     </main>
     <Footer lang={lang} />
     <script>
+      import '../scripts/motion';
+    </script>
+    <script>
       const revealed = document.querySelectorAll('[data-reveal]');
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(

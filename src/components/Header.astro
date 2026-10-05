@@ -26,6 +26,7 @@ const anchors = [
     </a>
     <nav class="anchors" aria-label="Sections">
       {anchors.map((a) => <a href={a.href}>{a.label}</a>)}
+      <span class="nav-ink" aria-hidden="true"></span>
     </nav>
     <nav class="langs mono" aria-label={dict.a11y.languageMenu}>
       {
@@ -38,6 +39,7 @@ const anchors = [
     </nav>
     <ComboToggle label={dict.a11y.changePalette} />
   </div>
+  <span class="scroll-progress" aria-hidden="true"></span>
 </header>
 
 <style>
@@ -66,9 +68,31 @@ const anchors = [
   }
 
   .anchors {
+    position: relative;
     display: none;
     gap: 2rem;
     margin-inline: auto;
+  }
+
+  .anchors a.active {
+    color: var(--bone);
+  }
+
+  /* slides under whichever section is on screen (positioned by the motion script) */
+  .nav-ink {
+    position: absolute;
+    left: 0;
+    bottom: -0.45rem;
+    width: var(--ink-w, 0);
+    height: 2px;
+    border-radius: 2px;
+    background: var(--glacial);
+    opacity: var(--ink-o, 0);
+    transform: translateX(var(--ink-x, 0));
+    transition:
+      transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+      width 450ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 250ms ease;
   }
 
   .anchors a {

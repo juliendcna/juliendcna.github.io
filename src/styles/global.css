@@ -311,3 +311,66 @@ ol {
     scroll-behavior: auto;
   }
 }
+
+/* ---- motion design ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* section headings wipe up from behind a mask, then an accent rule draws under them.
+     The mask sits on the inner span: IntersectionObserver never fires for an
+     element fully hidden by its own clip-path. */
+  .heading[data-reveal] {
+    position: relative;
+    opacity: 1;
+    transform: none;
+  }
+
+  .heading[data-reveal] .heading-text {
+    display: block;
+    transform: translateY(0.35em);
+    clip-path: inset(0 0 100% 0);
+    transition:
+      clip-path 900ms cubic-bezier(0.77, 0, 0.18, 1),
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .heading[data-reveal].in .heading-text {
+    transform: none;
+    clip-path: inset(-0.2em -0.2em -0.3em -0.2em);
+  }
+
+  .heading[data-reveal]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.3em;
+    width: 2.5em;
+    height: 3px;
+    background: var(--glacial);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 500ms;
+  }
+
+  .heading[data-reveal].in::after {
+    transform: scaleX(1);
+  }
+
+  /* magnetic elements drift toward the cursor (offset set by motion script) */
+  [data-magnetic] {
+    translate: var(--mag-x, 0) var(--mag-y, 0);
+    transition: translate 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* reading progress along the bottom edge of the header */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--glacial);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}

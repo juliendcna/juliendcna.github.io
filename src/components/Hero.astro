@@ -44,16 +44,16 @@ const marquee = [...stack, ...stack];
       <p class="pill"><span class="dot" aria-hidden="true"></span>{dict.hero.statusAvailable}</p>
     </div>
     <h1 class="name">
-      <span class="line-1">Julien</span>
-      <span class="line-2">Da&nbsp;Cunha</span>
+      <span class="line-1" data-depth="0.12">Julien</span>
+      <span class="line-2" data-depth="0.28">Da&nbsp;Cunha</span>
     </h1>
     <h2 class="sr-only">{dict.hero.intro} {staticRole}</h2>
     <p class="role" aria-hidden="true">
       <span class="rotator" data-roles={JSON.stringify(roles)}>{staticRole}</span>
     </p>
     <div class="ctas">
-      <a class="btn btn--solid" href="mailto:julien@dacunha.ovh">{dict.hero.ctaContact}</a>
-      <a class="btn btn--ghost" href="#experience">{dict.hero.ctaResume}</a>
+      <a data-magnetic class="btn btn--solid" href="mailto:julien@dacunha.ovh">{dict.hero.ctaContact}</a>
+      <a data-magnetic class="btn btn--ghost" href="#experience">{dict.hero.ctaResume}</a>
     </div>
   </div>
   <div class="marquee mono" aria-hidden="true">
@@ -80,7 +80,7 @@ const marquee = [...stack, ...stack];
     min-height: calc(100svh - 4rem);
     overflow: hidden;
     background:
-      radial-gradient(1100px 700px at 82% -10%, var(--glow-a), transparent 62%),
+      radial-gradient(1100px 700px at var(--glow-x, 82%) var(--glow-y, -10%), var(--glow-a), transparent 62%),
       radial-gradient(900px 600px at -12% 110%, var(--glow-b), transparent 60%);
   }
 

@@ -27,7 +27,7 @@
   --night: var(--ground-d);
   --night-raised: color-mix(in srgb, var(--ground-d) 91%, #ffffff);
   --bone: color-mix(in srgb, #f4f2ec 92%, var(--accent-d));
-  --dim: color-mix(in srgb, var(--bone) 58%, var(--night));
+  --dim: color-mix(in srgb, var(--bone) 64%, var(--night));
   --hairline: color-mix(in srgb, var(--bone) 12%, transparent);
   --hairline-faint: color-mix(in srgb, var(--bone) 6%, transparent);
   --glacial-wash: color-mix(in srgb, var(--glacial) 7%, transparent);

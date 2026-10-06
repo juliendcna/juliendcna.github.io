@@ -10,7 +10,8 @@ export default defineConfig({
   },
   vite: {
     // ship component scripts as cacheable files instead of inlining them into every page
-    build: { assetsInlineLimit: 0 },
+    // one stylesheet for the whole site: a single render-blocking request instead of two
+    build: { assetsInlineLimit: 0, cssCodeSplit: false },
   },
   i18n: {
     defaultLocale: 'en',

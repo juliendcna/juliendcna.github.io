@@ -56,8 +56,8 @@ if (progress) {
     }
   };
   window.addEventListener('scroll', queue, { passive: true });
+  // no initial read: the bar starts empty, and a restored scroll position fires a scroll event
   window.addEventListener('resize', queue);
-  update();
 }
 
 if (!reduced) {

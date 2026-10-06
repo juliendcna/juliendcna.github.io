@@ -1,0 +1,3 @@
+# dacunha.ovh shows no ads: per the IAB ads.txt spec, this placeholder record
+# declares that no seller is authorized to sell inventory on this domain.
+placeholder.example.com, placeholder, DIRECT, placeholder

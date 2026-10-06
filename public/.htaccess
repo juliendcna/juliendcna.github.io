@@ -1,48 +1,31 @@
-<IfModule mod_expires.c>
-    ExpiresActive On
+# Apache config for the OVH host (ignored by GitHub Pages)
 
-    # Default
-    ExpiresDefault "access plus 1 month"
+ErrorDocument 404 /404.html
 
-    # HTML
-    ExpiresByType text/html "access plus 0 seconds"
+<IfModule mod_rewrite.c>
+  RewriteEngine On
 
-    # CSS & JS
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType text/javascript "access plus 1 year"
-
-    # Images
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
-    ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
-
-    # Fonts
-    ExpiresByType font/ttf "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType font/otf "access plus 1 year"
-    ExpiresByType application/font-woff "access plus 1 year"
-    ExpiresByType application/font-woff2 "access plus 1 year"
-    ExpiresByType application/x-font-ttf "access plus 1 year"
-    ExpiresByType application/x-font-woff "access plus 1 year"
-    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  # one canonical origin: HTTPS on the bare domain
+  RewriteCond %{SERVER_PORT} ^80$ [OR]
+  RewriteCond %{HTTP_HOST} ^www\.dacunha\.ovh$ [NC]
+  RewriteRule ^ https://dacunha.ovh%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
-    # Cache static assets for 1 year
-    <FilesMatch "\.(ttf|woff|woff2|otf|eot|svg|webp|jpg|jpeg|png|gif|ico|css|js)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
 
-    # No cache for HTML
-    <FilesMatch "\.html$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
-        Header set Pragma "no-cache"
-        Header set Expires 0
-    </FilesMatch>
+  # hashed build assets never change; everything else revalidates
+  <FilesMatch "\.(js|css|woff2|webp|avif|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "^(favicon\.svg|favicon\.ico|apple-touch-icon\.png|robots\.txt|ads\.txt)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
 </IfModule>

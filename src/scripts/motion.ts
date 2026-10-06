@@ -2,9 +2,12 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /* ---- active section indicator in the nav ---- */
+const trimSlash = (path: string) => path.replace(/\/+$/, '');
 const anchorNav = document.querySelector<HTMLElement>('.anchors');
 const ink = anchorNav?.querySelector<HTMLElement>('.nav-ink');
-const links = anchorNav ? [...anchorNav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')] : [];
+const links = anchorNav
+  ? [...anchorNav.querySelectorAll<HTMLAnchorElement>('a[href*="#"]')].filter((a) => trimSlash(a.pathname) === trimSlash(location.pathname))
+  : [];
 
 if (anchorNav && ink && links.length) {
   const sections = links

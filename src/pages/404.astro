@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import { t, pathForLocale } from '../i18n';
+
+const dict = t('en');
+const sections = [
+  { href: '/#about', label: dict.nav.about },
+  { href: '/#experience', label: dict.nav.experience },
+  { href: '/#skills', label: dict.nav.skills },
+  { href: '/#contact', label: dict.nav.contact },
+];
+---
+
+<Base
+  lang="en"
+  title="Page not found — Julien Da Cunha"
+  description="This page doesn't exist. The rest of the site is up and running."
+  robots="noindex, nofollow"
+>
+  <section class="nf wrap">
+    <p class="code mono" aria-hidden="true">404</p>
+    <h1 class="title">This page doesn't exist.</h1>
+    <p class="lead">
+      The rest of the site is up and running — this one link is broken or the page has moved.
+      <span lang="fr">Cette page n'existe pas.</span>
+      <span lang="es">Esta página no existe.</span>
+    </p>
+
+    <div class="ctas">
+      <a class="btn btn--solid" href="/">Back to the homepage</a>
+      <a class="btn btn--ghost report" href="mailto:julien@dacunha.ovh?subject=Broken%20link">Report this broken link</a>
+    </div>
+
+    <nav class="jump mono" aria-label="Sections">
+      <span class="muted">Or jump to</span>
+      {sections.map((s) => <a class="link" href={s.href}>{s.label}</a>)}
+      <a class="link" href={pathForLocale('fr')} lang="fr">Français</a>
+      <a class="link" href={pathForLocale('es')} lang="es">Español</a>
+    </nav>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    min-height: calc(100svh - 4rem - 6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(3rem, 10vh, 6rem);
+  }
+
+  .code {
+    font-size: clamp(6rem, 24vw, 16rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--glacial);
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    color: var(--dim);
+    max-width: 52ch;
+    margin-bottom: 2.25rem;
+  }
+
+  .lead span {
+    display: block;
+    font-size: 0.875rem;
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .code {
+      animation: flicker 3.2s steps(1) infinite;
+    }
+
+    @keyframes flicker {
+      0%, 92%, 100% {
+        opacity: 1;
+      }
+      93% {
+        opacity: 0.35;
+      }
+      95% {
+        opacity: 1;
+      }
+      96% {
+        opacity: 0.5;
+      }
+    }
+  }
+</style>
+
+<script>
+  /* pre-fill the report with the missing URL and where the visitor came from */
+  const report = document.querySelector<HTMLAnchorElement>('.report');
+  if (report) {
+    const body = `Missing page: ${location.href}\nCame from: ${document.referrer || 'direct visit / unknown'}`;
+    report.href = `mailto:julien@dacunha.ovh?subject=${encodeURIComponent('Broken link on dacunha.ovh')}&body=${encodeURIComponent(body)}`;
+  }
+</script>

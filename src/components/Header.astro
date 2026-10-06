@@ -9,13 +9,14 @@ interface Props {
 
 const { lang } = Astro.props;
 const dict = t(lang);
+const home = pathForLocale(lang);
 
 const anchors = [
-  { href: '#about', label: dict.nav.about },
-  { href: '#experience', label: dict.nav.experience },
-  { href: '#education', label: dict.nav.education },
-  { href: '#skills', label: dict.nav.skills },
-  { href: '#contact', label: dict.nav.contact },
+  { href: `${home}#about`, label: dict.nav.about },
+  { href: `${home}#experience`, label: dict.nav.experience },
+  { href: `${home}#education`, label: dict.nav.education },
+  { href: `${home}#skills`, label: dict.nav.skills },
+  { href: `${home}#contact`, label: dict.nav.contact },
 ];
 ---
 

@@ -33,7 +33,6 @@ const stack = [
   { label: 'VMware', icon: 'vmware' },
   { label: 'Linux', icon: 'linux' },
 ];
-const marquee = [...stack, ...stack];
 ---
 
 <section class="hero">
@@ -59,7 +58,7 @@ const marquee = [...stack, ...stack];
   <div class="marquee mono" aria-hidden="true">
     <div class="track">
       {
-        marquee.map((item) => (
+        stack.map((item) => (
           <span>
             <TechIcon slug={item.icon} size={15} />
             {item.label}
@@ -292,6 +291,11 @@ const marquee = [...stack, ...stack];
 </style>
 
 <script>
+  /* the marquee loops by scrolling half its width, so it needs its items twice;
+     cloning here keeps the duplicate out of the HTML */
+  const track = document.querySelector<HTMLElement>('.marquee .track');
+  if (track) track.append(...[...track.children].map((n) => n.cloneNode(true)));
+
   const el = document.querySelector<HTMLElement>('.rotator');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

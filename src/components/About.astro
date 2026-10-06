@@ -23,7 +23,13 @@ const facts = [
 <SectionShell id="about" heading={dict.about.heading}>
   <div class="cols">
     <figure class="portrait" data-reveal>
-      <Image src={portrait} alt="Julien Da Cunha" width={720} densities={[1, 2]} loading="lazy" />
+      <Image
+        src={portrait}
+        alt="Julien Da Cunha"
+        widths={[360, 480, 720, 960]}
+        sizes="(min-width: 1200px) 430px, (min-width: 780px) 36vw, calc(100vw - 4.5rem)"
+        loading="lazy"
+      />
     </figure>
     <div class="text" data-reveal>
       <p class="body">{dict.about.body}</p>

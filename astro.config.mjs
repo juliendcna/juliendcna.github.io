@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import precompress from './integrations/precompress.mjs';
 
 export default defineConfig({
   site: 'https://dacunha.ovh',
@@ -31,5 +32,6 @@ export default defineConfig({
         },
       },
     }),
+    precompress(),
   ],
 });

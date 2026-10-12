@@ -63,7 +63,6 @@ export interface Dictionary {
     factLocation: string;
     factEmail: string;
     uptimeLabel: string;
-    cvNote: string;
   };
   experience: {
     key: string;

@@ -32,7 +32,6 @@ const es: Dictionary = {
     factLocation: 'Ubicación',
     factEmail: 'Correo',
     uptimeLabel: 'disponibilidad del lab',
-    cvNote: 'El CV público llegará pronto',
   },
   experience: {
     key: 'experiencia',

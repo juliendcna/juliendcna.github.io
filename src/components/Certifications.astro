@@ -13,43 +13,26 @@ const dict = t(lang);
 
 const badges = import.meta.glob<{ default: ImageMetadata }>('../assets/badges/*.{png,svg}', { eager: true });
 const monthYear = new Intl.DateTimeFormat(lang, { month: 'short', year: 'numeric' });
-const now = new Date();
-
-const certs = dict.certifications.items.map((cert) => {
-  const expires = cert.expires ? new Date(cert.expires) : undefined;
-  const expired = expires !== undefined && expires < now;
-  return {
-    ...cert,
-    image: cert.badge ? badges[`../assets/badges/${cert.badge}`]?.default : undefined,
-    badgeId: cert.url?.match(/credly\.com\/badges\/([0-9a-f-]{36})/)?.[1],
-    verifiable: cert.url?.includes('credly.com/badges/') ?? false,
-    status: expired
-      ? `${dict.certifications.expired} ${monthYear.format(expires)}`
-      : expires
-        ? `${dict.certifications.validUntil} ${monthYear.format(expires)}`
-        : undefined,
-    expired,
-    issued: cert.issued ? `${dict.certifications.issued} ${monthYear.format(new Date(cert.issued))}` : cert.year,
-  };
-});
+const certs = dict.certifications.items.map((cert) => ({
+  ...cert,
+  image: cert.badge ? badges[`../assets/badges/${cert.badge}`]?.default : undefined,
+  badgeId: cert.url?.match(/credly\.com\/badges\/([0-9a-f-]{36})/)?.[1],
+  verifiable: cert.url?.includes('credly.com/badges/') ?? false,
+  issued: cert.issued ? `${dict.certifications.issued} ${monthYear.format(new Date(cert.issued))}` : cert.year,
+}));
 ---
 
 <SectionShell id="certifications" heading={dict.certifications.heading}>
   <ul class="certs">
     {
       certs.map((cert) => (
-        <li class:list={['cert', { expired: cert.expired }]} data-reveal>
+        <li class="cert" data-reveal>
           {cert.image && (
             <Image src={cert.image} alt="" width={128} height={128} densities={[1, 2]} loading="lazy" class="badge" />
           )}
           <h3 class="title">{cert.title}</h3>
           <p class="org mono">{cert.org}</p>
-          <p class="dates mono">
-            {cert.issued}
-            {cert.status && (
-              <span class:list={['status', { off: cert.expired }]}>{cert.status}</span>
-            )}
-          </p>
+          <p class="dates mono">{cert.issued}</p>
           {cert.note && <p class="note muted">{cert.note}</p>}
           {cert.url && (
             <a class="view mono link" href={cert.url} target="_blank" rel="noopener">
@@ -137,10 +120,6 @@ const certs = dict.certifications.items.map((cert) => {
     transform: scale(1.06) rotate(-3deg);
   }
 
-  .expired .badge {
-    filter: grayscale(0.85) opacity(0.7);
-  }
-
   .title {
     font-family: var(--font-display);
     font-weight: 500;
@@ -159,21 +138,8 @@ const certs = dict.certifications.items.map((cert) => {
   }
 
   .dates {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
     font-size: 0.75rem;
     color: var(--dim);
-  }
-
-  .status {
-    color: var(--glacial);
-  }
-
-  .status.off {
-    color: var(--dim);
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
   }
 
   .note {

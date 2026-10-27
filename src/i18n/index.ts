@@ -21,9 +21,8 @@ export interface Certification {
   note?: string;
   /** file name in src/assets/badges/ */
   badge?: string;
-  /** ISO dates, from the Credly assertion */
+  /** ISO date, from the Credly assertion */
   issued?: string;
-  expires?: string;
 }
 
 export interface SkillItem {
@@ -85,8 +84,6 @@ export interface Dictionary {
     view: string;
     verify: string;
     issued: string;
-    validUntil: string;
-    expired: string;
     items: Certification[];
   };
   skills: {

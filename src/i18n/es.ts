@@ -119,8 +119,6 @@ const es: Dictionary = {
     view: 'Ver certificación',
     verify: 'Verificar en Credly',
     issued: 'Obtenida en',
-    validUntil: 'Válida hasta',
-    expired: 'Caducó en',
     items: [
       {
         year: '2026',
@@ -129,7 +127,6 @@ const es: Dictionary = {
         url: 'https://www.credly.com/badges/9cfd4e76-2bb8-4020-8f7e-8a4730d32d65',
         badge: 'gcp-network-engineer.png',
         issued: '2026-10-22',
-        expires: '2028-10-22',
       },
       {
         year: '2026',
@@ -138,7 +135,6 @@ const es: Dictionary = {
         url: 'https://www.credly.com/badges/9d726f5b-a9e0-4454-896e-ee3b6fb15e32/linked_in?t=t8ee83',
         badge: 'terraform-associate.png',
         issued: '2026-01-04',
-        expires: '2028-01-04',
       },
       {
         year: '2023',
@@ -147,7 +143,6 @@ const es: Dictionary = {
         url: 'https://www.credly.com/badges/911a7f65-2b9a-43f6-ba63-d3852a549969',
         badge: 'gcp-cloud-architect.png',
         issued: '2023-01-31',
-        expires: '2025-01-31',
       },
       {
         year: '2022',

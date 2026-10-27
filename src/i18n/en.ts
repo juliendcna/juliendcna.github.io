@@ -120,6 +120,12 @@ const en: Dictionary = {
     items: [
       {
         year: '2026',
+        title: 'Google Cloud Certified: Professional Cloud Network Engineer',
+        org: 'Google Cloud',
+        url: 'https://www.credly.com/badges/9cfd4e76-2bb8-4020-8f7e-8a4730d32d65',
+      },
+      {
+        year: '2026',
         title: 'HashiCorp Certified: Terraform Associate',
         org: 'HashiCorp',
         url: 'https://www.credly.com/badges/9d726f5b-a9e0-4454-896e-ee3b6fb15e32/linked_in?t=t8ee83',
